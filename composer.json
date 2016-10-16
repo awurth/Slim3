@@ -1,0 +1,17 @@
+{
+    "name": "awurth/quickslim",
+    "description": "Boilerplate for Slim PHP micro-framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexis Wurth",
+            "email": "alexis.wurth57@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.5",
+        "slim/twig-view": "^2.1",
+        "slim/flash": "^0.1.0",
+        "illuminate/database": "^5.3"
+    }
+}
