@@ -4,6 +4,7 @@ This is a skeleton for Slim PHP micro-framework to get started quickly
 ## Features
 - Eloquent ORM
 - Flash messages
+- Csrf protection
 - Twig templating engine
 - Twig cache
 - Twig debug extension
@@ -51,12 +52,8 @@ Now you can edit db.php and add your database configuration
 - `bootstrap/controllers.php`: Registers every controller in the app container
 - `bootstrap/db.php.dist`: Database configuration file model (do not put your database configuration here)
 - `bootstrap/dependencies.php`: Services for Pimple
+- `bootstrap/middleware.php`: Application middleware
 - `boostrap/routes.php`: Includes all routing files
 - `bootstrap/settings`: Application configuration
 - `src/App/Controller/Controller.php`: Base controller. All controllers should extend this class
 - `src/App/Resources/routes/app.php`: Main routing file
-
-## TODO
-- Middlewares
-- Authentication
-- Validation
