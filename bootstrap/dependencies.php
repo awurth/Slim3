@@ -17,6 +17,10 @@ $container['flash'] = function () {
     return new \Slim\Flash\Messages();
 };
 
+$container['csrf'] = function () {
+    return new \Slim\Csrf\Guard();
+};
+
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig(
         $container['settings']['view']['template_path'],
