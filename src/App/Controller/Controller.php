@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Interop\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface as Response;
 
 class Controller
 {
@@ -14,7 +13,7 @@ class Controller
         $this->container = $container;
     }
 
-    public function render(string $template, array $params = array()): Response
+    public function render($template, array $params = array())
     {
         return $this->container->get('view')->render(
             $this->container->get('response'),
@@ -23,23 +22,23 @@ class Controller
         );
     }
 
-    public function pathFor(string $route, array $params = array()): string
+    public function pathFor($route, array $params = array())
     {
         return $this->container->get('router')->pathFor($route, $params);
     }
 
-    public function redirect(string $route, array $params = array()): Response {
+    public function redirect($route, array $params = array()) {
         return $this->container->get('response')->withRedirect(
             $this->pathFor($route, $params)
         );
     }
 
-    public function flash(string $name, string $message)
+    public function flash($name, $message)
     {
         $this->container->get('flash')->addMessage($name, $message);
     }
 
-    public function __get(string $property)
+    public function __get($property)
     {
         return $this->container->get($property);
     }
