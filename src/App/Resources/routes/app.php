@@ -1,3 +1,3 @@
 <?php
 
-$app->get('/', 'AppController:home');
+$app->get('/', 'AppController:home')->setName('home');
