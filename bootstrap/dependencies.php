@@ -21,6 +21,10 @@ $container['csrf'] = function () {
     return new \Slim\Csrf\Guard();
 };
 
+$container['auth'] = function () {
+    return new \App\Service\Auth();
+};
+
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig(
         $container['settings']['view']['template_path'],
@@ -34,6 +38,7 @@ $container['view'] = function ($container) {
     $view->addExtension(new Twig_Extension_Debug());
 
     $view->getEnvironment()->addGlobal('flash', $container['flash']);
+    $view->getEnvironment()->addGlobal('auth', $container['auth']);
 
     return $view;
 };
