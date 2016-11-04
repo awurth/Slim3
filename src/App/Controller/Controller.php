@@ -3,9 +3,22 @@
 namespace App\Controller;
 
 use Interop\Container\ContainerInterface;
+use Slim\Flash\Messages;
+use Slim\Router;
+use Slim\Views\Twig;
 
+/**
+ * @property Twig view
+ * @property Router router
+ * @property Messages flash
+ */
 class Controller
 {
+    /**
+     * Slim application container
+     *
+     * @var ContainerInterface
+     */
     protected $container;
 
     public function __construct(ContainerInterface $container)
