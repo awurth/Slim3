@@ -21,6 +21,7 @@
         "slim/twig-view": "^2.1",
         "slim/flash": "^0.1.0",
         "slim/csrf": "^0.7.0",
-        "illuminate/database": "^5.3"
+        "illuminate/database": "^5.3",
+        "respect/validation": "^1.1"
     }
 }
