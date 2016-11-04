@@ -26,11 +26,6 @@ class Controller
         $this->container = $container;
     }
 
-    public function pathFor($route, array $params = array())
-    {
-        return $this->container->get('router')->pathFor($route, $params);
-    }
-
     public function redirect($route, array $params = array()) {
         return $this->container->get('response')->withRedirect(
             $this->pathFor($route, $params)
