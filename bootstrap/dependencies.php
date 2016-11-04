@@ -17,10 +17,6 @@ $container['flash'] = function () {
     return new \Slim\Flash\Messages();
 };
 
-$container['csrf'] = function () {
-    return new \Slim\Csrf\Guard();
-};
-
 $container['auth'] = function () {
     return new \App\Service\Auth();
 };
