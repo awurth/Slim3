@@ -13,15 +13,6 @@ class Controller
         $this->container = $container;
     }
 
-    public function render($template, array $params = array())
-    {
-        return $this->container->get('view')->render(
-            $this->container->get('response'),
-            $template,
-            $params
-        );
-    }
-
     public function pathFor($route, array $params = array())
     {
         return $this->container->get('router')->pathFor($route, $params);
