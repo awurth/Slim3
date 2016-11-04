@@ -2,15 +2,18 @@
 
 namespace App\TwigExtension;
 
-use Slim\Csrf\Guard;
+use Psr\Http\Message\RequestInterface as Request;
 
 class Csrf extends \Twig_Extension
 {
-    private $csrf;
+    private $csrfName;
 
-    public function __construct(Guard $csrf)
+    private $csrfValue;
+
+    public function __construct(Request $request)
     {
-        $this->csrf = $csrf;
+        $this->csrfName = $request->getAttribute('csrf_name');
+        $this->csrfValue = $request->getAttribute('csrf_value');
     }
 
     public function getName()
@@ -28,8 +31,8 @@ class Csrf extends \Twig_Extension
     public function csrf()
     {
         return '
-            <input type="hidden" name="' . $this->csrf->getTokenNameKey() . '" value="' . $this->csrf->getTokenName() . '">
-            <input type="hidden" name="' . $this->csrf->getTokenValueKey() . '" value="' . $this->csrf->getTokenValue() . '">
+            <input type="hidden" name="csrf_name" value="' . $this->csrfName . '">
+            <input type="hidden" name="csrf_value" value="' . $this->csrfValue . '">
         ';
     }
 }
