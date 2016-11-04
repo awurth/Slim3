@@ -1,4 +1,4 @@
 <?php
 
 $app->add(new \App\Middleware\CsrfMiddleware($container));
-$app->add($container['csrf']);
+$app->add(new \Slim\Csrf\Guard());
