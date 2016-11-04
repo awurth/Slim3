@@ -2,4 +2,11 @@
 
 $routes = __DIR__ . '/../src/App/Resources/routes/';
 
-require $routes . 'app.php';
+$files = [
+    'app',
+    'auth'
+];
+
+foreach ($files as $file) {
+    require $routes . $file . '.php';
+}
