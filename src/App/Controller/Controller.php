@@ -7,11 +7,13 @@ use Interop\Container\ContainerInterface;
 use Slim\Flash\Messages;
 use Slim\Router;
 use Slim\Views\Twig;
+use App\Service\Auth;
 
 /**
  * @property Twig view
  * @property Router router
  * @property Messages flash
+ * @property Auth auth
  */
 class Controller
 {
