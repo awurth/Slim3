@@ -21,4 +21,10 @@ class AuthController extends Controller
 
         return $this->view->render($response, 'Auth/login.twig');
     }
+
+    public function logout(Request $request, Response $response)
+    {
+        $this->auth->logout();
+        return $this->redirect($response, 'home');
+    }
 }
