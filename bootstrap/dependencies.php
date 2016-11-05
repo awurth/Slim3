@@ -46,3 +46,7 @@ $container['view'] = function ($container) {
 
     return $view;
 };
+
+foreach ($container['settings']['routes']['files'] as $file) {
+    require $container['settings']['routes']['dir'] . '/' . $file . '.php';
+}
