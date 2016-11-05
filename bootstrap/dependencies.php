@@ -13,6 +13,14 @@ $container['db'] = function () use ($capsule) {
     return $capsule;
 };
 
+$container['sentinel'] = function () {
+    $sentinel = new \Cartalyst\Sentinel\Native\Facades\Sentinel(
+        new \Cartalyst\Sentinel\Native\SentinelBootstrapper(__DIR__ . '/sentinel.php')
+    );
+
+    return $sentinel->getSentinel();
+};
+
 $container['flash'] = function () {
     return new \Slim\Flash\Messages();
 };
