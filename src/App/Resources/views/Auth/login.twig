@@ -17,6 +17,11 @@
                             <label for="password">Password</label>
                             <input type="text" class="form-control" name="password" id="password">
                         </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember"> Remember me
+                            </label>
+                        </div>
                         {{ csrf() }}
                         <input type="submit" value="Login" class="btn btn-primary">
                     </form>
