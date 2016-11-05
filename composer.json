@@ -22,6 +22,7 @@
         "slim/flash": "^0.1.0",
         "slim/csrf": "^0.7.0",
         "illuminate/database": "^5.3",
-        "respect/validation": "^1.1"
+        "respect/validation": "^1.1",
+        "cartalyst/sentinel": "^2.0"
     }
 }
