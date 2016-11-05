@@ -4,12 +4,12 @@ $container = $app->getContainer();
 
 $db = require_once __DIR__ . '/db.php';
 
-$container['db'] = function () use ($db) {
-    $capsule = new \Illuminate\Database\Capsule\Manager();
-    $capsule->addConnection($db);
-    $capsule->setAsGlobal();
-    $capsule->bootEloquent();
+$capsule = new \Illuminate\Database\Capsule\Manager();
+$capsule->addConnection($db);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
 
+$container['db'] = function () use ($capsule) {
     return $capsule;
 };
 
