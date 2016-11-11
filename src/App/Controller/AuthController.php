@@ -29,6 +29,13 @@ class AuthController extends Controller
             $email = $request->getParam('email');
             $password = $request->getParam('password');
 
+            $this->validator->validate($request, [
+                'username' => V::length(6, 25)->alnum('_')->noWhitespace(),
+                'email' => V::noWhitespace()->email(),
+                'password' => V::noWhitespace()->length(6, 25),
+                'password-confirm' => V::equals($password)
+            ]);
+
             if ($this->sentinel->findByCredentials(['login' => $username])) {
                 $this->validator->addError('username', 'User already exists with this username.');
             }
