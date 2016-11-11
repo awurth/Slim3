@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\Validator;
 use Cartalyst\Sentinel\Sentinel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Interop\Container\ContainerInterface;
@@ -15,6 +16,7 @@ use App\Service\Auth;
  * @property Router router
  * @property Messages flash
  * @property Auth auth
+ * @property Validator validator
  * @property Sentinel sentinel
  */
 class Controller
