@@ -1,5 +1,7 @@
 {% extends 'layout.twig' %}
 
+{% import 'Macro/form.twig' as form %}
+
 {% block body %}
 
 <div class="container">
@@ -9,22 +11,11 @@
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
                     <form action="{{ path_for('register') }}" method="POST">
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" id="username">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="text" class="form-control" name="email" id="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="text" class="form-control" name="password" id="password">
-                        </div>
-                        <div class="form-group">
-                            <label for="password-confirm">Confirm password</label>
-                            <input type="text" class="form-control" name="password-confirm" id="password-confirm">
-                        </div>
+                        {{ form.group('username', null, 'username', 'Username') }}
+                        {{ form.group('email', null, 'email', 'Email', null, 'email') }}
+                        {{ form.group('password', null, 'password', 'Password', null, 'password') }}
+                        {{ form.group('password-confirm', null, 'password-confirm', 'Confirm password', null, 'password') }}
+
                         {{ csrf() }}
                         <input type="submit" value="Register" class="btn btn-primary">
                     </form>
