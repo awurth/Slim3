@@ -29,6 +29,10 @@ $container['auth'] = function () {
     return new \App\Service\Auth();
 };
 
+$container['validator'] = function () {
+    return new \App\Service\Validator();
+};
+
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig(
         $container['settings']['view']['template_path'],
@@ -39,7 +43,8 @@ $container['view'] = function ($container) {
         $container['router'],
         $container['request']->getUri()
     ));
-    $view->addExtension(new Twig_Extension_Debug());
+    $view->addExtension(new \Twig_Extension_Debug());
+    $view->addExtension(new \App\TwigExtension\Validation($container['validator']));
 
     $view->getEnvironment()->addGlobal('flash', $container['flash']);
     $view->getEnvironment()->addGlobal('auth', $container['auth']);
