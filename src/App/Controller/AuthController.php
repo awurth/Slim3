@@ -22,6 +22,43 @@ class AuthController extends Controller
         return $this->view->render($response, 'Auth/login.twig');
     }
 
+    public function register(Request $request, Response $response)
+    {
+        if ($request->isPost()) {
+            $username = $request->getParam('username');
+            $email = $request->getParam('email');
+            $password = $request->getParam('password');
+
+            if ($this->sentinel->findByCredentials(['login' => $username])) {
+                $this->validator->addError('username', 'User already exists with this username.');
+            }
+
+            if ($this->sentinel->findByCredentials(['login' => $email])) {
+                $this->validator->addError('email', 'User already exists with this email address.');
+            }
+
+            if ($this->validator->isValid()) {
+                $role = $this->sentinel->findRoleByName('User');
+
+                $user = $this->sentinel->create([
+                    'username' => $username,
+                    'email' => $email,
+                    'password' => $password,
+                    'permissions' => [
+                        'user.delete' => 0
+                    ]
+                ]);
+
+                $role->users()->attach($user);
+
+                $this->flash('success', 'Your account has been created.');
+                return $this->redirect($response, 'home');
+            }
+        }
+
+        return $this->view->render($response, 'Auth/register.twig');
+    }
+
     public function logout(Request $request, Response $response)
     {
         $this->auth->logout();
