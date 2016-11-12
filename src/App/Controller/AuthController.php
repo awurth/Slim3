@@ -19,7 +19,7 @@ class AuthController extends Controller
             $remember = $request->getParam('remember') ? true : false;
 
             try {
-                if ($this->sentinel->authenticate($credentials, $remember)) {
+                if ($this->auth->authenticate($credentials, $remember)) {
                     $this->flash('success', 'You have been logged in.');
                     return $this->redirect($response, 'home');
                 } else {
@@ -49,18 +49,18 @@ class AuthController extends Controller
                 'password-confirm' => V::equals($password)
             ]);
 
-            if ($this->sentinel->findByCredentials(['login' => $username])) {
+            if ($this->auth->findByCredentials(['login' => $username])) {
                 $this->validator->addError('username', 'User already exists with this username.');
             }
 
-            if ($this->sentinel->findByCredentials(['login' => $email])) {
+            if ($this->auth->findByCredentials(['login' => $email])) {
                 $this->validator->addError('email', 'User already exists with this email address.');
             }
 
             if ($this->validator->isValid()) {
-                $role = $this->sentinel->findRoleByName('User');
+                $role = $this->auth->findRoleByName('User');
 
-                $user = $this->sentinel->create([
+                $user = $this->auth->create([
                     'username' => $username,
                     'email' => $email,
                     'password' => $password,
@@ -81,7 +81,7 @@ class AuthController extends Controller
 
     public function logout(Request $request, Response $response)
     {
-        $this->sentinel->logout();
+        $this->auth->logout();
 
         $this->flash('success', 'You have been logged out.');
         return $this->redirect($response, 'home');

@@ -13,7 +13,7 @@ $container['db'] = function () use ($capsule) {
     return $capsule;
 };
 
-$container['sentinel'] = function () {
+$container['auth'] = function () {
     $sentinel = new \Cartalyst\Sentinel\Native\Facades\Sentinel(
         new \Cartalyst\Sentinel\Native\SentinelBootstrapper(__DIR__ . '/sentinel.php')
     );
@@ -23,10 +23,6 @@ $container['sentinel'] = function () {
 
 $container['flash'] = function () {
     return new \Slim\Flash\Messages();
-};
-
-$container['auth'] = function () {
-    return new \App\Service\Auth();
 };
 
 $container['validator'] = function () {
@@ -47,7 +43,6 @@ $container['view'] = function ($container) {
     $view->addExtension(new \App\TwigExtension\Validation($container['validator']));
 
     $view->getEnvironment()->addGlobal('flash', $container['flash']);
-    $view->getEnvironment()->addGlobal('auth', $container['auth']);
 
     return $view;
 };

@@ -11,15 +11,13 @@ use Slim\Exception\NotFoundException;
 use Slim\Flash\Messages;
 use Slim\Router;
 use Slim\Views\Twig;
-use App\Service\Auth;
 
 /**
  * @property Twig view
  * @property Router router
  * @property Messages flash
- * @property Auth auth
  * @property Validator validator
- * @property Sentinel sentinel
+ * @property Sentinel auth
  */
 class Controller
 {
