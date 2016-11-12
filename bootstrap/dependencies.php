@@ -43,6 +43,7 @@ $container['view'] = function ($container) {
     $view->addExtension(new \App\TwigExtension\Validation($container['validator']));
 
     $view->getEnvironment()->addGlobal('flash', $container['flash']);
+    $view->getEnvironment()->addGlobal('auth', $container['auth']);
 
     return $view;
 };
