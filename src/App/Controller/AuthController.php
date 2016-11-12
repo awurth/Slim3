@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Respect\Validation\Validator as V;
@@ -11,12 +12,24 @@ class AuthController extends Controller
     public function login(Request $request, Response $response)
     {
         if ($request->isPost()) {
-            if (!$this->auth->attempt($request->getParam('username'), $request->getParam('password'))) {
-                $this->flash('danger', 'Wrong username or password.');
-                return $this->redirect($response, 'login');
+            $credentials = [
+                'username' => $request->getParam('username'),
+                'password' => $request->getParam('password')
+            ];
+            $remember = $request->getParam('remember') ? true : false;
+
+            try {
+                if ($this->sentinel->authenticate($credentials, $remember)) {
+                    $this->flash('success', 'You have been logged in.');
+                    return $this->redirect($response, 'home');
+                } else {
+                    $this->flash('danger', 'Bad username or password.');
+                }
+            } catch (ThrottlingException $e) {
+                $this->flash('danger', 'Too many attempts!');
             }
 
-            return $this->redirect($response, 'home');
+            return $this->redirect($response, 'login');
         }
 
         return $this->view->render($response, 'Auth/login.twig');
@@ -59,7 +72,7 @@ class AuthController extends Controller
                 $role->users()->attach($user);
 
                 $this->flash('success', 'Your account has been created.');
-                return $this->redirect($response, 'home');
+                return $this->redirect($response, 'login');
             }
         }
 

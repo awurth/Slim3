@@ -1,5 +1,7 @@
 {% extends 'layout.twig' %}
 
+{% import 'Macro/form.twig' as form %}
+
 {% block body %}
 
 <div class="container">
@@ -9,14 +11,8 @@
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
                     <form action="{{ path_for('login') }}" method="POST">
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" id="username">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="text" class="form-control" name="password" id="password">
-                        </div>
+                        {{ form.group('username', null, 'username', 'Username') }}
+                        {{ form.group('password', null, 'password', 'Password', null, 'password') }}
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="remember"> Remember me
