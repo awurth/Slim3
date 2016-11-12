@@ -60,7 +60,7 @@ class AuthController extends Controller
             if ($this->validator->isValid()) {
                 $role = $this->auth->findRoleByName('User');
 
-                $user = $this->auth->create([
+                $user = $this->auth->registerAndActivate([
                     'username' => $username,
                     'email' => $email,
                     'password' => $password,
