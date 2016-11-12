@@ -81,7 +81,9 @@ class AuthController extends Controller
 
     public function logout(Request $request, Response $response)
     {
-        $this->auth->logout();
+        $this->sentinel->logout();
+
+        $this->flash('success', 'You have been logged out.');
         return $this->redirect($response, 'home');
     }
 }
