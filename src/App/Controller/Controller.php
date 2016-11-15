@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use App\Service\Validator;
 use Cartalyst\Sentinel\Sentinel;
-use Illuminate\Support\Facades\Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Interop\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\NotFoundException;
 use Slim\Flash\Messages;
 use Slim\Router;
@@ -73,11 +73,11 @@ class Controller
     /**
      * Create new NotFoundException
      *
-     * @param Request $request
+     * @param ServerRequestInterface $request
      * @param Response $response
      * @return NotFoundException
      */
-    public function notFoundException(Request $request, Response $response)
+    public function notFoundException(ServerRequestInterface $request, Response $response)
     {
         return new NotFoundException($request, $response);
     }
