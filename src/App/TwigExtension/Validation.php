@@ -28,8 +28,8 @@ class Validation extends \Twig_Extension
         return [
             new \Twig_SimpleFunction('error', array($this, 'getError')),
             new \Twig_SimpleFunction('errors', array($this, 'getErrors')),
-            new \Twig_SimpleFunction('hasError', array($this, 'hasError')),
-            new \Twig_SimpleFunction('hasErrors', array($this, 'hasErrors'))
+            new \Twig_SimpleFunction('has_error', array($this, 'hasError')),
+            new \Twig_SimpleFunction('has_errors', array($this, 'hasErrors'))
         ];
     }
 
