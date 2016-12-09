@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Service\Validator;
+use Awurth\Slim\Validation\Validator;
 use Cartalyst\Sentinel\Sentinel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Interop\Container\ContainerInterface;

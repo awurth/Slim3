@@ -4,9 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1ce5f94ff121f4def272c5735ae1ab49",
-    "content-hash": "f1f16f56f186a1974df9083740aab1ec",
+    "hash": "98bff9fc33ba96f486de46f891d1cd06",
+    "content-hash": "a4692cf9beb2784ded9f1e611b4458b9",
     "packages": [
+        {
+            "name": "awurth/slim-validation",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/awurth/slim-validation.git",
+                "reference": "b09f1106e68f9a263b6cf8f87363c24ef4683bdb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/awurth/slim-validation/zipball/b09f1106e68f9a263b6cf8f87363c24ef4683bdb",
+                "reference": "b09f1106e68f9a263b6cf8f87363c24ef4683bdb",
+                "shasum": ""
+            },
+            "require": {
+                "psr/http-message": "^1.0",
+                "respect/validation": "^1.1"
+            },
+            "require-dev": {
+                "slim/twig-view": "^2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Awurth\\Slim\\Validation\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexis Wurth",
+                    "email": "alexis.wurth57@gmail.com",
+                    "homepage": "https://github.com/awurth"
+                }
+            ],
+            "description": "A validator for Slim micro-framework",
+            "homepage": "https://github.com/awurth/slim-validation",
+            "keywords": [
+                "slim",
+                "validation"
+            ],
+            "time": "2016-12-09 20:54:28"
+        },
         {
             "name": "cartalyst/sentinel",
             "version": "v2.0.13",
