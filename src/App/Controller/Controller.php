@@ -60,6 +60,32 @@ class Controller
     }
 
     /**
+     * Write JSON in the response body
+     *
+     * @param Response $response
+     * @param mixed $data
+     * @param int $status
+     * @return int
+     */
+    public function json(Response $response, $data, $status = 200)
+    {
+        return $this->write($response, json_encode($data), $status);
+    }
+
+    /**
+     * Write text in the response body
+     *
+     * @param Response $response
+     * @param string $data
+     * @param int $status
+     * @return int
+     */
+    public function write(Response $response, $data, $status = 200)
+    {
+        return $response->withStatus($status)->getBody()->write($data);
+    }
+
+    /**
      * Add a flash message
      *
      * @param string $name
