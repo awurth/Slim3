@@ -40,6 +40,7 @@ $container['view'] = function ($container) {
         $container['request']->getUri()
     ));
     $view->addExtension(new \Twig_Extension_Debug());
+    $view->addExtension(new \App\TwigExtension\Asset($container['request']));
     $view->addExtension(new \Awurth\Slim\Validation\ValidatorExtension($container['validator']));
 
     $view->getEnvironment()->addGlobal('flash', $container['flash']);
