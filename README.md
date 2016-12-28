@@ -41,7 +41,7 @@ Now you can edit db.php and add your database configuration
 
 ## Key files
 - `public/index.php`: Application entry point
-- `cache/`: Twig cache
+- `cache/twig/`: Twig cache
 - `bootstrap/`: Configuration files
     - `controllers.php`: Registers every controller in the app container
     - `db.php.dist`: Database configuration file model (do not put your database configuration here)

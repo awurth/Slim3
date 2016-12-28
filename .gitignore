@@ -2,5 +2,5 @@ composer.phar
 composer.lock
 vendor/
 cache/*
-!cache/.gitkeep
+!cache/twig/.gitkeep
 bootstrap/db.php
