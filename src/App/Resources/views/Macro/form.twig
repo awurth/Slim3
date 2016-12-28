@@ -7,4 +7,19 @@
     </div>
 {% endmacro %}
 
-
+{% macro select(name, options, value_key, text_key, default_value, default_text, selected_value, id, label) %}
+    <div class="form-group{% if has_error(name) %} has-error{% endif %}">
+        {% if label %}
+            <label for="{{ id }}">{{ label }}</label>
+        {% endif %}
+        <select name="{{ name }}" id="{{ id }}" class="form-control">
+            {% if default_value or default_text %}
+                <option value="{{ default_value }}">{{ default_text }}</option>
+            {% endif %}
+            {% for option in options %}
+                <option value="{{ option[value_key] }}"{% if selected_value == option[value_key] %} selected{% endif %}>{{ option[text_key] }}</option>
+            {% endfor %}
+        </select>
+        <span id="{{ id }}-help-block" class="help-block">{{ error(name) }}</span>
+    </div>
+{% endmacro %}
