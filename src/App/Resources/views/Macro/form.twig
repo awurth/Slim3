@@ -17,7 +17,7 @@
                 <option value="{{ default_value }}">{{ default_text }}</option>
             {% endif %}
             {% for option in options %}
-                <option value="{{ option[value_key] }}"{% if selected_value == option[value_key] %} selected{% endif %}>{{ option[text_key] }}</option>
+                <option value="{{ attribute(option, value_key) }}"{% if selected_value == attribute(option, value_key) %} selected{% endif %}>{{ attribute(option, text_key) }}</option>
             {% endfor %}
         </select>
         <span id="{{ id }}-help-block" class="help-block">{{ error(name) }}</span>
