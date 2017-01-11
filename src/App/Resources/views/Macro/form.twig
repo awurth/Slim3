@@ -12,7 +12,7 @@
         {% if label %}
             <label for="{{ id }}">{{ label }}</label>
         {% endif %}
-        <select name="{{ name }}" id="{{ id }}" class="form-control">
+        <select name="{{ name }}" id="{{ id }}" class="form-control" aria-describedby="{{ id }}-help-block">
             {% if default_value or default_text %}
                 <option value="{{ default_value }}">{{ default_text }}</option>
             {% endif %}
@@ -20,6 +20,14 @@
                 <option value="{{ attribute(option, value_key) }}"{% if selected_value == attribute(option, value_key) %} selected{% endif %}>{{ attribute(option, text_key) }}</option>
             {% endfor %}
         </select>
+        <span id="{{ id }}-help-block" class="help-block">{{ error(name) }}</span>
+    </div>
+{% endmacro %}
+
+{% macro textarea(name, value, id, label, class, rows, cols) %}
+    <div class="form-group{% if has_error(name) %} has-error{% endif %}">
+        <label for="{{ id }}">{{ label }}</label>
+        <textarea class="form-control {{ class }}" name="{{ name }}" id="{{ id }}" cols="{{ cols }}" rows="{{ rows }}" aria-describedby="{{ id }}-help-block">{{ value }}</textarea>
         <span id="{{ id }}-help-block" class="help-block">{{ error(name) }}</span>
     </div>
 {% endmacro %}
