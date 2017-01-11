@@ -69,7 +69,7 @@ class Controller
      */
     public function json(Response $response, $data, $status = 200)
     {
-        return $this->write($response, json_encode($data), $status);
+        return $response->withJson($data, $status);
     }
 
     /**
