@@ -2,7 +2,6 @@
 return [
     'settings' => [
 
-        'determineRouteBeforeAppMiddleware' => false,
         'displayErrorDetails' => true,
 
         'view' => [
@@ -12,14 +11,6 @@ return [
                 'debug' => true,
                 'auto_reload' => true,
             ],
-        ],
-
-        'routes' => [
-            'dir' => __DIR__ . '/../src/App/Resources/routes',
-            'files' => [
-                'app',
-                'auth'
-            ]
         ],
 
     ],

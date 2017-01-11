@@ -52,7 +52,3 @@ $container['view'] = function ($container) {
 $container['foundHandler'] = function() {
     return new \Slim\Handlers\Strategies\RequestResponseArgs();
 };
-
-foreach ($container['settings']['routes']['files'] as $file) {
-    require $container['settings']['routes']['dir'] . '/' . $file . '.php';
-}

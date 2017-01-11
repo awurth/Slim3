@@ -13,4 +13,6 @@ require __DIR__ . '/../bootstrap/middleware.php';
 
 require __DIR__ . '/../bootstrap/controllers.php';
 
+require __DIR__ . '/../bootstrap/routes.php';
+
 $app->run();
