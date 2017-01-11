@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use Awurth\Slim\Validation\Validator;
 use Cartalyst\Sentinel\Sentinel;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Interop\Container\ContainerInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\NotFoundException;
 use Slim\Flash\Messages;
 use Slim\Router;
@@ -99,11 +99,11 @@ class Controller
     /**
      * Create new NotFoundException
      *
-     * @param ServerRequestInterface $request
+     * @param Request $request
      * @param Response $response
      * @return NotFoundException
      */
-    public function notFoundException(ServerRequestInterface $request, Response $response)
+    public function notFoundException(Request $request, Response $response)
     {
         return new NotFoundException($request, $response);
     }
