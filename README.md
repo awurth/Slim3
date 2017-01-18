@@ -31,13 +31,13 @@ $ bower install
 ```
 This will create a `bower/` folder in `public/` for jQuery and Semantic UI
 
-### 2. Setup permissions
+### 3. Setup permissions
 You will have to give write permissions to the `cache/` and `cache/twig/` folders
 ```bash
 $ chmod 777 cache
 ```
 
-### 3. Configure database connection
+### 4. Configure database connection
 Navigate to the `bootstrap/` folder and copy `db.php.dist` to `db.php`
 ```bash
 $ cd bootstrap
@@ -46,7 +46,7 @@ $ cp db.php.dist db.php
 
 Now you can edit db.php and add your database configuration
 
-### 4. Create tables
+### 5. Create tables
 ```bash
 $ php bootstrap/database.php
 ```
