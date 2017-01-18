@@ -1,8 +1,8 @@
 {
-    "name": "awurth/quickslim",
+    "name": "awurth/slim-base",
     "description": "Boilerplate for Slim PHP micro-framework",
     "keywords": ["slim", "eloquent", "twig", "framework", "boilerplate", "skeleton"],
-    "homepage": "https://github.com/awurth/quickslim",
+    "homepage": "https://github.com/awurth/slim-base",
     "license": "MIT",
     "authors": [
         {

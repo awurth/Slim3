@@ -1,4 +1,4 @@
-# Quick slim - Slim 3 skeleton
+# Slim-base - Slim 3 skeleton
 This is a skeleton for Slim PHP micro-framework to get started quickly
 
 ## Features
@@ -13,12 +13,12 @@ This is a skeleton for Slim PHP micro-framework to get started quickly
 ### 1. Create project
 #### Using composer
 ```bash
-$ composer create-project awurth/quickslim [app-name]
+$ composer create-project awurth/slim-base [app-name]
 ```
 
 #### Manual install
 ```bash
-$ git clone https://github.com/awurth/quickslim.git
+$ git clone https://github.com/awurth/slim-base.git
 $ composer install
 ```
 
