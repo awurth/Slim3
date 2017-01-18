@@ -34,6 +34,33 @@ class Controller
     }
 
     /**
+     * Stop the script and print info about a variable
+     *
+     * @param mixed $data
+     */
+    public function debug($data)
+    {
+        die('<pre>' . print_r($data, true) . '</pre>');
+    }
+
+    /**
+     * Get request params
+     *
+     * @param Request $request
+     * @param string[] $params
+     * @return array
+     */
+    public function params(Request $request, array $params)
+    {
+        $data = [];
+        foreach ($params as $param) {
+            $data[$param] = $request->getParam($param);
+        }
+
+        return $data;
+    }
+
+    /**
      * Redirect to route
      *
      * @param Response $response
