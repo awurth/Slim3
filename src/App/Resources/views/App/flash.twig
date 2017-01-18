@@ -1,12 +1,12 @@
-<div class="container">
+<div class="ui container flash">
     {% for name, messages in flash.getMessages() %}
-        <div class="alert alert-{{ name }} alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
+        <div class="ui {{ name }} message">
+            <i class="close icon"></i>
+            <div class="header">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
         </div>
     {% endfor %}
 </div>

@@ -23,13 +23,11 @@ class AuthController extends Controller
                     $this->flash('success', 'You have been logged in.');
                     return $this->redirect($response, 'home');
                 } else {
-                    $this->flash('danger', 'Bad username or password.');
+                    $this->validator->addError('auth', 'Bad username or password');
                 }
             } catch (ThrottlingException $e) {
-                $this->flash('danger', 'Too many attempts!');
+                $this->validator->addError('auth', 'Too many attempts!');
             }
-
-            return $this->redirect($response, 'login');
         }
 
         return $this->view->render($response, 'Auth/login.twig');
