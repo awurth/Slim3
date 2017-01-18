@@ -8,6 +8,8 @@ This is a skeleton for Slim PHP micro-framework to get started quickly
 - Authentication (Sentinel)
 - Validation (Respect)
 - Twig templating engine (cache, debug)
+- CSS Framework Semantic UI
+- Helpers for debugging, assets management, redirections, ...
 
 ## Installation
 ### 1. Create project
@@ -18,13 +20,20 @@ $ composer create-project awurth/slim-base [app-name]
 
 #### Manual install
 ```bash
-$ git clone https://github.com/awurth/slim-base.git
+$ git clone https://github.com/awurth/slim-base.git [app-name]
+$ cd [app-name]
 $ composer install
 ```
 
-### 2. Setup permissions
+### 2. Download bower dependencies
 ```bash
-$ cd [app-name]
+$ bower install
+```
+This will create a `bower/` folder in `public/` for jQuery and Semantic UI
+
+### 2. Setup permissions
+You will have to give write permissions to the `cache/` and `cache/twig/` folders
+```bash
 $ chmod 777 cache
 ```
 
