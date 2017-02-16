@@ -1,5 +1,5 @@
 
-{% macro group(name, value, id, label, class, placeholder, type, required) %}
+{% macro input(name, value, id, label, class, placeholder, type, required) %}
     <div class="{% if required %}required {% endif %}field{% if has_error(name) %} error{% endif %}">
         <label for="{{ id }}">{{ label }}</label>
         <input type="{{ type|default('text') }}" name="{{ name }}" value="{{ value }}" id="{{ id }}" class="{{ class }}" placeholder="{{ placeholder }}" {% if required %}required{% endif %}>
