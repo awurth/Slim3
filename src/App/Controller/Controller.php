@@ -68,7 +68,7 @@ class Controller
      * @param array $params
      * @return Response
      */
-    public function redirect(Response $response, $route, array $params = array())
+    public function redirect(Response $response, $route, array $params = [])
     {
         return $response->withRedirect($this->router->pathFor($route, $params));
     }
