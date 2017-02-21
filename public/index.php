@@ -19,6 +19,8 @@ $app = new Slim\App($settings);
 
 require __DIR__ . '/../bootstrap/dependencies.php';
 
+require __DIR__ . '/../bootstrap/handlers.php';
+
 require __DIR__ . '/../bootstrap/middleware.php';
 
 require __DIR__ . '/../bootstrap/controllers.php';
