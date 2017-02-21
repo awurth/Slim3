@@ -4,5 +4,5 @@ vendor/
 public/bower/
 cache/twig/*
 !cache/twig/.gitkeep
-bootstrap/db.php
+bootstrap/parameters.yml
 public/css/*.css.map

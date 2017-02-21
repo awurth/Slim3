@@ -16,9 +16,6 @@
             "App\\": "src/App"
         }
     },
-    "scripts": {
-        "start": "php -S 0.0.0.0:8080 -t public public/index.php"
-    },
     "require": {
         "slim/slim": "^3.6",
         "slim/twig-view": "^2.1",
@@ -29,6 +26,21 @@
         "cartalyst/sentinel": "^2.0",
         "illuminate/events": "^5.3",
         "symfony/http-foundation": "^3.2",
-        "awurth/slim-validation": "^1.2"
+        "awurth/slim-validation": "^1.2",
+        "incenteev/composer-parameter-handler": "^2.1"
+    },
+    "scripts": {
+        "start": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ]
+    },
+    "extra": {
+        "incenteev-parameters": {
+            "file": "bootstrap/parameters.yml"
+        }
     }
 }
