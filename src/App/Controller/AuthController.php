@@ -41,10 +41,20 @@ class AuthController extends Controller
             $password = $request->getParam('password');
 
             $this->validator->validate($request, [
-                'username' => V::length(6, 25)->alnum('_')->noWhitespace(),
+                'username' => V::length(3, 25)->alnum('_')->noWhitespace(),
                 'email' => V::noWhitespace()->email(),
-                'password' => V::noWhitespace()->length(6, 25),
-                'password-confirm' => V::equals($password)
+                'password' => [
+                    'rules' => V::noWhitespace()->length(6, 25),
+                    'messages' => [
+                        'length' => 'The password length must be between {{minValue}} and {{maxValue}} characters'
+                    ]
+                ],
+                'password_confirm' => [
+                    'rules' => V::equals($password),
+                    'messages' => [
+                        'equals' => 'Passwords don\'t match'
+                    ]
+                ]
             ]);
 
             if ($this->auth->findByCredentials(['login' => $username])) {
