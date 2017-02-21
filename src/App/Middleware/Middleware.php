@@ -3,6 +3,8 @@
 namespace App\Middleware;
 
 use Interop\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 use Cartalyst\Sentinel\Sentinel;
 use Slim\Flash\Messages;
@@ -15,7 +17,7 @@ use Slim\Views\Twig;
  * @property Messages flash
  * @property Sentinel auth
  */
-class Middleware
+abstract class Middleware
 {
     /**
      * Slim application container
@@ -28,6 +30,8 @@ class Middleware
     {
         $this->container = $container;
     }
+
+    public abstract function __invoke(Request $request, Response $response, callable $next);
 
     public function __get($property)
     {

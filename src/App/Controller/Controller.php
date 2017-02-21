@@ -19,7 +19,7 @@ use Slim\Views\Twig;
  * @property Validator validator
  * @property Sentinel auth
  */
-class Controller
+abstract class Controller
 {
     /**
      * Slim application container
