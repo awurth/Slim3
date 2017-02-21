@@ -12,42 +12,25 @@ This is a skeleton for Slim PHP micro-framework to get started quickly
 - Helpers for debugging, assets management, redirections, ...
 
 ## Installation
-### 1. Create project
-#### Using composer
-```bash
+### 1. Create project using Composer
+``` bash
 $ composer create-project awurth/slim-base [app-name]
 ```
 
-#### Manual install
-```bash
-$ git clone https://github.com/awurth/slim-base.git [app-name]
-$ cd [app-name]
-$ composer install
-```
-
 ### 2. Download bower dependencies
-```bash
+``` bash
 $ bower install
 ```
 This will create a `bower/` folder in `public/` for jQuery and Semantic UI
 
 ### 3. Setup permissions
 You will have to give write permissions to the `cache/` and `cache/twig/` folders
-```bash
+``` bash
 $ chmod 777 cache
 ```
 
-### 4. Configure database connection
-Navigate to the `bootstrap/` folder and copy `db.php.dist` to `db.php`
-```bash
-$ cd bootstrap
-$ cp db.php.dist db.php
-```
-
-Now you can edit db.php and add your database configuration
-
-### 5. Create tables
-```bash
+### 4. Create tables
+``` bash
 $ php bootstrap/database.php
 ```
 
@@ -57,14 +40,16 @@ $ php bootstrap/database.php
 - `bootstrap/`: Configuration files
     - `controllers.php`: Registers every controller in the app container
     - `database.php`: Script for creating database tables
-    - `db.php.dist`: Database configuration file model (do not put your database configuration here)
+    - `parameters.yml.dist`: Database configuration file model (do not put your database configuration here)
     - `dependencies.php`: Services for Pimple
+    - `handlers.php`: Slim error handlers
     - `middleware.php`: Application middleware
-    - `settings`: Application configuration
+    - `settings.php`: Application configuration
 - `src/`
     - `App/`
         - `Controller/`: Application controllers
             - `Controller.php`: Base controller. All controllers should extend this class
+        - `Middleware/`: Application middleware
         - `Model/`: Eloquent model classes
         - `Resources/`
             - `routes/`: Application routes
