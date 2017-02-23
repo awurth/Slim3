@@ -27,10 +27,10 @@
                         <input type="password" name="password" placeholder="Password">
                     </div>
                 </div>
-                <div class="field{% if has_error('password-confirm') %} error{% endif %}">
+                <div class="field{% if has_error('password_confirm') %} error{% endif %}">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password-confirm" placeholder="Confirm password">
+                        <input type="password" name="password_confirm" placeholder="Confirm password">
                     </div>
                 </div>
                 {{ csrf() }}
