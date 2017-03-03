@@ -29,7 +29,7 @@ Manager::schema()->create('user', function (Blueprint $table) {
 
 Manager::schema()->create('activations', function (Blueprint $table) {
     $table->increments('id');
-    $table->integer('user_id')->unsigned();
+    $table->unsignedInteger('user_id');
     $table->string('code');
     $table->boolean('completed')->default(0);
     $table->timestamp('completed_at')->nullable();
@@ -39,7 +39,7 @@ Manager::schema()->create('activations', function (Blueprint $table) {
 
 Manager::schema()->create('persistences', function (Blueprint $table) {
     $table->increments('id');
-    $table->integer('user_id')->unsigned();
+    $table->unsignedInteger('user_id');
     $table->string('code')->unique();
     $table->timestamps();
     $table->foreign('user_id')->references('id')->on('user');
@@ -47,7 +47,7 @@ Manager::schema()->create('persistences', function (Blueprint $table) {
 
 Manager::schema()->create('reminders', function (Blueprint $table) {
     $table->increments('id');
-    $table->integer('user_id')->unsigned();
+    $table->unsignedInteger('user_id');
     $table->string('code');
     $table->boolean('completed')->default(0);
     $table->timestamp('completed_at')->nullable();
@@ -64,8 +64,8 @@ Manager::schema()->create('roles', function (Blueprint $table) {
 });
 
 Manager::schema()->create('role_users', function (Blueprint $table) {
-    $table->integer('user_id')->unsigned();
-    $table->integer('role_id')->unsigned();
+    $table->unsignedInteger('user_id');
+    $table->unsignedInteger('role_id');
     $table->timestamps();
     $table->primary(['user_id', 'role_id']);
     $table->foreign('user_id')->references('id')->on('user');
