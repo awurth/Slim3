@@ -1,4 +1,5 @@
 <?php
+
 return [
     'settings' => [
 
@@ -10,8 +11,8 @@ return [
                 'cache' => __DIR__ . '/../cache/twig',
                 'debug' => true,
                 'auto_reload' => true,
-            ],
-        ],
+            ]
+        ]
 
-    ],
+    ]
 ];

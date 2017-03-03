@@ -48,7 +48,7 @@ $container['view'] = function ($container) {
         $container['router'],
         $container['request']->getUri()
     ));
-    $view->addExtension(new \Twig_Extension_Debug());
+    $view->addExtension(new Twig_Extension_Debug());
     $view->addExtension(new Asset($container['request']));
     $view->addExtension(new ValidatorExtension($container['validator']));
 
