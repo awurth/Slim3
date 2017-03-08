@@ -3,8 +3,10 @@
 namespace App\TwigExtension;
 
 use Psr\Http\Message\RequestInterface as Request;
+use Twig_SimpleFunction;
+use Twig_Extension;
 
-class Csrf extends \Twig_Extension
+class CsrfExtension extends Twig_Extension
 {
     private $csrfName;
 
@@ -24,7 +26,7 @@ class Csrf extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('csrf', array($this, 'csrf'), array('is_safe' => array('html')))
+            new Twig_SimpleFunction('csrf', array($this, 'csrf'), array('is_safe' => array('html')))
         ];
     }
 

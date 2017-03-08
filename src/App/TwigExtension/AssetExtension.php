@@ -3,8 +3,10 @@
 namespace App\TwigExtension;
 
 use Psr\Http\Message\RequestInterface;
+use Twig_SimpleFunction;
+use Twig_Extension;
 
-class Asset extends \Twig_Extension
+class AssetExtension extends Twig_Extension
 {
     protected $request;
 
@@ -21,7 +23,7 @@ class Asset extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('asset', [$this, 'asset'])
+            new Twig_SimpleFunction('asset', [$this, 'asset'])
         ];
     }
 

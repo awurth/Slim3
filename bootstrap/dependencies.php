@@ -8,7 +8,7 @@ use Slim\Flash\Messages;
 use Awurth\Slim\Validation\Validator;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
-use App\TwigExtension\Asset;
+use App\TwigExtension\AssetExtension;
 use Awurth\Slim\Validation\ValidatorExtension;
 
 $container = $app->getContainer();
@@ -49,7 +49,7 @@ $container['view'] = function ($container) {
         $container['request']->getUri()
     ));
     $view->addExtension(new Twig_Extension_Debug());
-    $view->addExtension(new Asset($container['request']));
+    $view->addExtension(new AssetExtension($container['request']));
     $view->addExtension(new ValidatorExtension($container['validator']));
 
     $view->getEnvironment()->addGlobal('flash', $container['flash']);
