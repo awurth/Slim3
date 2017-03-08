@@ -31,7 +31,7 @@ abstract class Middleware
         $this->container = $container;
     }
 
-    public abstract function __invoke(Request $request, Response $response, callable $next);
+    abstract public function __invoke(Request $request, Response $response, callable $next);
 
     public function __get($property)
     {
