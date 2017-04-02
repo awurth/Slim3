@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Awurth\Slim\Validation\Validator;
+use Awurth\SlimValidation\Validator;
 use Cartalyst\Sentinel\Sentinel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -92,7 +92,7 @@ abstract class Controller
      * @param Response $response
      * @param mixed $data
      * @param int $status
-     * @return int
+     * @return Response
      */
     public function json(Response $response, $data, $status = 200)
     {

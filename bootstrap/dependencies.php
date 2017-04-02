@@ -5,11 +5,11 @@ use Illuminate\Database\Capsule\Manager;
 use Cartalyst\Sentinel\Native\Facades\Sentinel;
 use Cartalyst\Sentinel\Native\SentinelBootstrapper;
 use Slim\Flash\Messages;
-use Awurth\Slim\Validation\Validator;
+use Awurth\SlimValidation\Validator;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use App\TwigExtension\AssetExtension;
-use Awurth\Slim\Validation\ValidatorExtension;
+use Awurth\SlimValidation\ValidatorExtension;
 
 $container = $app->getContainer();
 
