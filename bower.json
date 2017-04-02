@@ -2,7 +2,7 @@
   "name": "slim-base",
   "private": true,
   "dependencies": {
-    "jquery": "^3.1.1",
-    "semantic": "^2.2.7"
+    "jquery": "^3.2.1",
+    "semantic": "^2.2.10"
   }
 }

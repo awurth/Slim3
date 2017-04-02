@@ -1,7 +1,5 @@
-composer.phar
-composer.lock
 vendor/
-public/bower/
+public/lib/
 cache/twig/*
 !cache/twig/.gitkeep
 bootstrap/parameters.yml

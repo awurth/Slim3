@@ -21,7 +21,7 @@ $ composer create-project awurth/slim-base [app-name]
 ``` bash
 $ bower install
 ```
-This will create a `bower/` folder in `public/` for jQuery and Semantic UI
+This will create a `lib/` folder in `public/` for jQuery and Semantic UI
 
 ### 3. Setup permissions
 You will have to give write permissions to the `cache/` and `cache/twig/` folders
