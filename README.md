@@ -17,11 +17,22 @@ This is a skeleton for Slim PHP micro-framework to get started quickly
 $ composer create-project awurth/slim-base [app-name]
 ```
 
-### 2. Download bower dependencies
+### 2. Download bower and npm dependencies
 ``` bash
 $ bower install
+$ npm install
 ```
 This will create a `lib/` folder in `public/` for jQuery and Semantic UI
+
+##### Install Gulp globally
+``` bash
+$ npm install -g gulp-cli
+```
+
+##### Run watcher to compile SASS and Javascript
+``` bash
+$ gulp
+```
 
 ### 3. Setup permissions
 You will have to give write permissions to the `cache/` and `cache/twig/` folders
