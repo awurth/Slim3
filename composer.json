@@ -18,15 +18,15 @@
     },
     "require": {
         "slim/slim": "^3.6",
-        "slim/twig-view": "^2.1",
+        "slim/twig-view": "^2.2",
         "slim/flash": "^0.2.0",
-        "slim/csrf": "^0.8.0",
-        "illuminate/database": "^5.3",
+        "slim/csrf": "^0.8.1",
+        "illuminate/database": "^5.4",
         "respect/validation": "^1.1",
         "cartalyst/sentinel": "^2.0",
-        "illuminate/events": "^5.3",
+        "illuminate/events": "^5.4",
         "symfony/http-foundation": "^3.2",
-        "awurth/slim-validation": "^1.2",
+        "awurth/slim-validation": "^2.0",
         "incenteev/composer-parameter-handler": "^2.1"
     },
     "scripts": {
