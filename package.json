@@ -1,0 +1,20 @@
+{
+  "name": "slim-base",
+  "version": "2.2.0",
+  "description": "Boilerplate for Slim PHP micro-framework",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awurth/slim-base.git"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/awurth/slim-base#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1"
+  }
+}

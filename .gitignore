@@ -1,6 +1,10 @@
 vendor/
+node_modules/
 public/lib/
 cache/twig/*
 !cache/twig/.gitkeep
 bootstrap/parameters.yml
-public/css/*.css.map
+public/css/*
+!public/css/.gitkeep
+public/js/*
+!public/js/.gitkeep
