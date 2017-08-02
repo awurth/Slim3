@@ -1,4 +1,4 @@
-# Slim-base - Slim 3 skeleton
+# Slim base - A Slim 3 skeleton
 > This is a skeleton for Slim PHP micro-framework to get started quickly
 
 ## Features
