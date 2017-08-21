@@ -2,17 +2,23 @@
 
 namespace App\TwigExtension;
 
-use Psr\Http\Message\RequestInterface as Request;
-use Twig_SimpleFunction;
+use Psr\Http\Message\ServerRequestInterface;
 use Twig_Extension;
+use Twig_SimpleFunction;
 
 class CsrfExtension extends Twig_Extension
 {
+    /**
+     * @var string
+     */
     private $csrfName;
 
+    /**
+     * @var string
+     */
     private $csrfValue;
 
-    public function __construct(Request $request)
+    public function __construct(ServerRequestInterface $request)
     {
         $this->csrfName = $request->getAttribute('csrf_name');
         $this->csrfValue = $request->getAttribute('csrf_value');

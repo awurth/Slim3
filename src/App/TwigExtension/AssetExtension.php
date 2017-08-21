@@ -2,15 +2,18 @@
 
 namespace App\TwigExtension;
 
-use Psr\Http\Message\RequestInterface;
-use Twig_SimpleFunction;
+use Psr\Http\Message\ServerRequestInterface;
 use Twig_Extension;
+use Twig_SimpleFunction;
 
 class AssetExtension extends Twig_Extension
 {
+    /**
+     * @var ServerRequestInterface
+     */
     protected $request;
 
-    public function __construct(RequestInterface $request)
+    public function __construct(ServerRequestInterface $request)
     {
         $this->request = $request;
     }

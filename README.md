@@ -12,7 +12,7 @@ This is a skeleton for Slim PHP micro-framework to get started quickly
 - Validation (Respect)
 - Twig templating engine (cache, debug)
 - CSS Framework Semantic UI
-- Helpers for debugging, assets management, redirections, ...
+- Helpers for assets management, redirections, ...
 
 ## Installation
 ### 1. Create project using Composer
