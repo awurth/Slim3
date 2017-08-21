@@ -39,16 +39,6 @@ abstract class Controller
     }
 
     /**
-     * Stops the script and print info about a variable.
-     *
-     * @param mixed $data
-     */
-    public function debug($data)
-    {
-        die('<pre>' . print_r($data, true) . '</pre>');
-    }
-
-    /**
      * Gets request parameters.
      *
      * @param Request $request
