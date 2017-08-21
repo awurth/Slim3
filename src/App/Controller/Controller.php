@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use Awurth\SlimValidation\Validator;
 use Cartalyst\Sentinel\Sentinel;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\NotFoundException;
 use Slim\Flash\Messages;
+use Slim\Http\Request;
+use Slim\Http\Response;
 use Slim\Router;
 use Slim\Views\Twig;
 
@@ -71,7 +73,7 @@ abstract class Controller
     }
 
     /**
-     * Redirects to url.
+     * Redirects to a url.
      *
      * @param Response $response
      * @param string $url
@@ -100,13 +102,13 @@ abstract class Controller
     /**
      * Writes text in the response body.
      *
-     * @param Response $response
+     * @param ResponseInterface $response
      * @param string $data
      * @param int $status
      *
      * @return int
      */
-    public function write(Response $response, $data, $status = 200)
+    public function write(ResponseInterface $response, $data, $status = 200)
     {
         return $response->withStatus($status)->getBody()->write($data);
     }
@@ -125,12 +127,12 @@ abstract class Controller
     /**
      * Creates a new NotFoundException.
      *
-     * @param Request $request
-     * @param Response $response
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
      *
      * @return NotFoundException
      */
-    public function notFoundException(Request $request, Response $response)
+    public function notFoundException(ServerRequestInterface $request, ResponseInterface $response)
     {
         return new NotFoundException($request, $response);
     }
@@ -138,7 +140,7 @@ abstract class Controller
     /**
      * Gets a service from the container.
      *
-     * @param $property
+     * @param string $property
      *
      * @return mixed
      */
