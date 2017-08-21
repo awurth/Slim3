@@ -22,19 +22,24 @@ use Slim\Views\Twig;
 abstract class Controller
 {
     /**
-     * Slim application container
+     * Slim application container.
      *
      * @var ContainerInterface
      */
     protected $container;
 
+    /**
+     * Constructor.
+     *
+     * @param ContainerInterface $container
+     */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
     }
 
     /**
-     * Stop the script and print info about a variable
+     * Stops the script and print info about a variable.
      *
      * @param mixed $data
      */
@@ -44,10 +49,11 @@ abstract class Controller
     }
 
     /**
-     * Get request params
+     * Gets request parameters.
      *
      * @param Request $request
      * @param string[] $params
+     *
      * @return array
      */
     public function params(Request $request, array $params)
@@ -61,11 +67,12 @@ abstract class Controller
     }
 
     /**
-     * Redirect to route
+     * Redirects to a route.
      *
      * @param Response $response
      * @param string $route
      * @param array $params
+     *
      * @return Response
      */
     public function redirect(Response $response, $route, array $params = [])
@@ -74,7 +81,7 @@ abstract class Controller
     }
 
     /**
-     * Redirect to url
+     * Redirects to url.
      *
      * @param Response $response
      * @param string $url
@@ -87,11 +94,12 @@ abstract class Controller
     }
 
     /**
-     * Write JSON in the response body
+     * Writes JSON in the response body.
      *
      * @param Response $response
      * @param mixed $data
      * @param int $status
+     *
      * @return Response
      */
     public function json(Response $response, $data, $status = 200)
@@ -100,11 +108,12 @@ abstract class Controller
     }
 
     /**
-     * Write text in the response body
+     * Writes text in the response body.
      *
      * @param Response $response
      * @param string $data
      * @param int $status
+     *
      * @return int
      */
     public function write(Response $response, $data, $status = 200)
@@ -113,7 +122,7 @@ abstract class Controller
     }
 
     /**
-     * Add a flash message
+     * Adds a flash message.
      *
      * @param string $name
      * @param string $message
@@ -124,10 +133,11 @@ abstract class Controller
     }
 
     /**
-     * Create new NotFoundException
+     * Creates a new NotFoundException.
      *
      * @param Request $request
      * @param Response $response
+     *
      * @return NotFoundException
      */
     public function notFoundException(Request $request, Response $response)
@@ -135,6 +145,13 @@ abstract class Controller
         return new NotFoundException($request, $response);
     }
 
+    /**
+     * Gets a service from the container.
+     *
+     * @param $property
+     *
+     * @return mixed
+     */
     public function __get($property)
     {
         return $this->container->get($property);
