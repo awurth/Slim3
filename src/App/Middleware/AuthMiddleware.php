@@ -2,15 +2,19 @@
 
 namespace App\Middleware;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 class AuthMiddleware extends Middleware
 {
+    /**
+     * {@inheritdoc}
+     */
     public function __invoke(Request $request, Response $response, callable $next)
     {
         if (!$this->auth->check()) {
             $this->flash->addMessage('danger', 'You must be logged in to access this page!');
+
             return $response->withRedirect($this->router->pathFor('login'));
         }
 
