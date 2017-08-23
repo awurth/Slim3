@@ -1,15 +1,15 @@
 <?php
 
-use Symfony\Component\Yaml\Yaml;
-use Illuminate\Database\Capsule\Manager;
+use App\TwigExtension\AssetExtension;
+use Awurth\SlimValidation\Validator;
+use Awurth\SlimValidation\ValidatorExtension;
 use Cartalyst\Sentinel\Native\Facades\Sentinel;
 use Cartalyst\Sentinel\Native\SentinelBootstrapper;
+use Illuminate\Database\Capsule\Manager;
 use Slim\Flash\Messages;
-use Awurth\SlimValidation\Validator;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
-use App\TwigExtension\AssetExtension;
-use Awurth\SlimValidation\ValidatorExtension;
+use Symfony\Component\Yaml\Yaml;
 
 $container = $app->getContainer();
 
