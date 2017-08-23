@@ -20,7 +20,7 @@ class AuthController extends Controller
 
             try {
                 if ($this->auth->authenticate($credentials, $remember)) {
-                    $this->flash('success', 'You have been logged in.');
+                    $this->flash('success', 'You are now logged in.');
                     return $this->redirect($response, 'home');
                 } else {
                     $this->validator->addError('auth', 'Bad username or password');
@@ -58,11 +58,11 @@ class AuthController extends Controller
             ]);
 
             if ($this->auth->findByCredentials(['login' => $username])) {
-                $this->validator->addError('username', 'User already exists with this username.');
+                $this->validator->addError('username', 'This username is already used.');
             }
 
             if ($this->auth->findByCredentials(['login' => $email])) {
-                $this->validator->addError('email', 'User already exists with this email address.');
+                $this->validator->addError('email', 'This email is already used.');
             }
 
             if ($this->validator->isValid()) {
@@ -80,6 +80,7 @@ class AuthController extends Controller
                 $role->users()->attach($user);
 
                 $this->flash('success', 'Your account has been created.');
+
                 return $this->redirect($response, 'login');
             }
         }
@@ -91,7 +92,6 @@ class AuthController extends Controller
     {
         $this->auth->logout();
 
-        $this->flash('success', 'You have been logged out.');
         return $this->redirect($response, 'home');
     }
 }
