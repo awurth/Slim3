@@ -12,13 +12,13 @@
                 <div class="field{% if has_error('username') %} error{% endif %}">
                     <div class="ui left icon input">
                         <i class="user icon"></i>
-                        <input type="text" name="username" placeholder="Username">
+                        <input type="text" name="username" placeholder="Username" value="{{ val('username') }}">
                     </div>
                 </div>
                 <div class="field{% if has_error('email') %} error{% endif %}">
                     <div class="ui left icon input">
                         <i class="mail icon"></i>
-                        <input type="email" name="email" placeholder="Email">
+                        <input type="email" name="email" placeholder="Email" value="{{ val('email') }}">
                     </div>
                 </div>
                 <div class="field{% if has_error('password') %} error{% endif %}">
