@@ -2,8 +2,8 @@ parameters:
     driver: mysql
     host: localhost
     username: root
-    password: ''
+    password: ~
     database: slim_base
     charset: utf8
     collation: utf8_general_ci
-    prefix: ''
+    prefix: ~
