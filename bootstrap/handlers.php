@@ -34,8 +34,8 @@ if ($container['env'] === 'prod') {
         };
     };
 
-    $container['phpErrorHandler'] = function ($container) use ($config) {
-        return function (Request $request, Response $response, Throwable $error) use ($container, $config) {
+    $container['phpErrorHandler'] = function ($container) {
+        return function (Request $request, Response $response, Throwable $error) use ($container) {
             return $response->withStatus(500)->write($container['view']->fetch('Error/500.twig'));
         };
     };
