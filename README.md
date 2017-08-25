@@ -37,6 +37,8 @@ $ npm install -g gulp-cli
 $ gulp
 ```
 
+This will compile and watch all SASS and JS files and put the result in the `public/` folder
+
 ### 3. Setup permissions
 You will have to give write permissions to the `cache/` and `cache/twig/` folders
 ``` bash
