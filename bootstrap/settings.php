@@ -1,14 +1,15 @@
 <?php
 
 return [
+    'env' => 'prod',
     'settings' => [
 
-        'displayErrorDetails' => true,
+        'displayErrorDetails' => false,
 
         'view' => [
-            'template_path' => __DIR__ . '/../src/App/Resources/views',
+            'template_path' => dirname(__DIR__) . '/src/App/Resources/views',
             'twig' => [
-                'cache' => __DIR__ . '/../cache/twig',
+                'cache' => dirname(__DIR__) . '/cache/twig',
                 'debug' => true,
                 'auto_reload' => true
             ]

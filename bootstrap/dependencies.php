@@ -49,7 +49,10 @@ $container['view'] = function ($container) {
         $container['request']->getUri()
     ));
     $view->addExtension(new Twig_Extension_Debug());
-    $view->addExtension(new AssetExtension($container['request']));
+    $view->addExtension(new AssetExtension(
+        $container['request'],
+        isset($container['settings']['assets']['base_path']) ? $container['settings']['assets']['base_path'] : ''
+    ));
     $view->addExtension(new ValidatorExtension($container['validator']));
 
     $view->getEnvironment()->addGlobal('flash', $container['flash']);

@@ -13,9 +13,15 @@ class AssetExtension extends Twig_Extension
      */
     protected $request;
 
-    public function __construct(ServerRequestInterface $request)
+    /**
+     * @var string
+     */
+    protected $basePath;
+
+    public function __construct(ServerRequestInterface $request, $basePath = '')
     {
         $this->request = $request;
+        $this->basePath = $basePath;
     }
 
     public function getName()
@@ -32,6 +38,6 @@ class AssetExtension extends Twig_Extension
 
     public function asset($path)
     {
-        return $this->request->getUri()->getBaseUrl() . '/' . $path;
+        return $this->request->getUri()->getBaseUrl() . '/' . $this->basePath . $path;
     }
 }
