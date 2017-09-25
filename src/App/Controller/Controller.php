@@ -5,8 +5,6 @@ namespace App\Controller;
 use Awurth\SlimValidation\Validator;
 use Cartalyst\Sentinel\Sentinel;
 use Psr\Container\ContainerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 use Slim\Exception\NotFoundException;
 use Slim\Flash\Messages;
 use Slim\Http\Request;
@@ -43,16 +41,17 @@ abstract class Controller
     /**
      * Gets request parameters.
      *
-     * @param Request $request
+     * @param Request  $request
      * @param string[] $params
+     * @param string   $default
      *
-     * @return array
+     * @return string[]
      */
-    public function params(Request $request, array $params)
+    public function params(Request $request, array $params, $default = null)
     {
         $data = [];
         foreach ($params as $param) {
-            $data[$param] = $request->getParam($param);
+            $data[$param] = $request->getParam($param, $default);
         }
 
         return $data;
@@ -62,8 +61,8 @@ abstract class Controller
      * Redirects to a route.
      *
      * @param Response $response
-     * @param string $route
-     * @param array $params
+     * @param string   $route
+     * @param array    $params
      *
      * @return Response
      */
@@ -76,7 +75,7 @@ abstract class Controller
      * Redirects to a url.
      *
      * @param Response $response
-     * @param string $url
+     * @param string   $url
      *
      * @return Response
      */
@@ -89,8 +88,8 @@ abstract class Controller
      * Writes JSON in the response body.
      *
      * @param Response $response
-     * @param mixed $data
-     * @param int $status
+     * @param mixed    $data
+     * @param int      $status
      *
      * @return Response
      */
@@ -102,13 +101,13 @@ abstract class Controller
     /**
      * Writes text in the response body.
      *
-     * @param ResponseInterface $response
-     * @param string $data
-     * @param int $status
+     * @param Response $response
+     * @param string   $data
+     * @param int      $status
      *
      * @return int
      */
-    public function write(ResponseInterface $response, $data, $status = 200)
+    public function write(Response $response, $data, $status = 200)
     {
         return $response->withStatus($status)->getBody()->write($data);
     }
@@ -127,12 +126,12 @@ abstract class Controller
     /**
      * Creates a new NotFoundException.
      *
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface $response
+     * @param Request  $request
+     * @param Response $response
      *
      * @return NotFoundException
      */
-    public function notFoundException(ServerRequestInterface $request, ResponseInterface $response)
+    public function notFoundException(Request $request, Response $response)
     {
         return new NotFoundException($request, $response);
     }
