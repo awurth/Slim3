@@ -7,13 +7,19 @@ use Cartalyst\Sentinel\Native\SentinelBootstrapper;
 
 $sentinel = (new Sentinel(new SentinelBootstrapper(__DIR__ . '/../sentinel.php')))->getSentinel();
 
-Manager::schema()->dropIfExists('activations');
-Manager::schema()->dropIfExists('persistences');
-Manager::schema()->dropIfExists('reminders');
-Manager::schema()->dropIfExists('role_users');
-Manager::schema()->dropIfExists('throttle');
-Manager::schema()->dropIfExists('roles');
-Manager::schema()->dropIfExists('user');
+$dropTables = [
+    'activations',
+    'persistences',
+    'reminders',
+    'role_users',
+    'throttle',
+    'roles',
+    'user'
+];
+
+foreach ($dropTables as $table) {
+    Manager::schema()->dropIfExists($table);
+}
 
 Manager::schema()->create('user', function (Blueprint $table) {
     $table->increments('id');
