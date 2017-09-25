@@ -83,20 +83,20 @@ Manager::schema()->create('throttle', function (Blueprint $table) {
 
 /* -------------------------------------------------- */
 
-$sentinel->getRoleRepository()->createModel()->create(array(
+$sentinel->getRoleRepository()->createModel()->create([
     'name' => 'Admin',
     'slug' => 'admin',
-    'permissions' => array(
+    'permissions' => [
         'user.create' => true,
         'user.update' => true,
         'user.delete' => true
-    )
-));
+    ]
+]);
 
-$sentinel->getRoleRepository()->createModel()->create(array(
+$sentinel->getRoleRepository()->createModel()->create([
     'name' => 'User',
     'slug' => 'user',
-    'permissions' => array(
+    'permissions' => [
         'user.update' => true
-    )
-));
+    ]
+]);
