@@ -16,7 +16,7 @@ class AuthController extends Controller
                 'username' => $request->getParam('username'),
                 'password' => $request->getParam('password')
             ];
-            $remember = $request->getParam('remember') ? true : false;
+            $remember = $request->getParam('remember', false);
 
             try {
                 if ($this->auth->authenticate($credentials, $remember)) {
@@ -40,7 +40,7 @@ class AuthController extends Controller
             $email = $request->getParam('email');
             $password = $request->getParam('password');
 
-            $this->validator->validate($request, [
+            $this->validator->request($request, [
                 'username' => V::length(3, 25)->alnum('_')->noWhitespace(),
                 'email' => V::noWhitespace()->email(),
                 'password' => [
