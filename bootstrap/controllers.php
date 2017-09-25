@@ -1,9 +1,12 @@
 <?php
 
-$container['AppController'] = function ($container) {
-    return new App\Controller\AppController($container);
-};
+$controllers = [
+    'app.controller' => 'App\Controller\AppController',
+    'auth.controller' => 'App\Controller\AuthController'
+];
 
-$container['AuthController'] = function ($container) {
-    return new App\Controller\AuthController($container);
-};
+foreach ($controllers as $key => $class) {
+    $container[$key] = function ($container) use ($class) {
+        return new $class($container);
+    };
+}

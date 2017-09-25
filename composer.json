@@ -29,6 +29,9 @@
         "symfony/http-foundation": "^3.3",
         "respect/validation": "^1.1"
     },
+    "config": {
+        "sort-packages": true
+    },
     "scripts": {
         "start": "php -S 0.0.0.0:8080 -t public public/index.php",
         "post-install-cmd": [
