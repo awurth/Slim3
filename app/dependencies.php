@@ -6,6 +6,9 @@ use Awurth\SlimValidation\ValidatorExtension;
 use Cartalyst\Sentinel\Native\Facades\Sentinel;
 use Cartalyst\Sentinel\Native\SentinelBootstrapper;
 use Illuminate\Database\Capsule\Manager;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use Monolog\Processor\UidProcessor;
 use Slim\Flash\Messages;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
@@ -39,9 +42,11 @@ $container['validator'] = function () {
 };
 
 $container['view'] = function ($container) {
+    $settings = $container['settings'];
+
     $view = new Twig(
-        $container['settings']['view']['template_path'],
-        $container['settings']['view']['twig']
+        $settings['view']['templates_path'],
+        $settings['view']['twig']
     );
 
     $view->addExtension(new TwigExtension(
@@ -51,7 +56,7 @@ $container['view'] = function ($container) {
     $view->addExtension(new Twig_Extension_Debug());
     $view->addExtension(new AssetExtension(
         $container['request'],
-        isset($container['settings']['assets']['base_path']) ? $container['settings']['assets']['base_path'] : ''
+        isset($settings['assets']['base_path']) ? $settings['assets']['base_path'] : ''
     ));
     $view->addExtension(new ValidatorExtension($container['validator']));
 
@@ -59,4 +64,14 @@ $container['view'] = function ($container) {
     $view->getEnvironment()->addGlobal('auth', $container['auth']);
 
     return $view;
+};
+
+$container['monolog'] = function ($container) {
+    $settings = $container['settings']['monolog'];
+
+    $logger = new Logger($settings['name']);
+    $logger->pushProcessor(new UidProcessor());
+    $logger->pushHandler(new StreamHandler($settings['path'], Logger::DEBUG));
+
+    return $logger;
 };

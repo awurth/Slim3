@@ -7,12 +7,15 @@ return [
         'displayErrorDetails' => false,
 
         'view' => [
-            'template_path' => dirname(__DIR__) . '/src/App/Resources/views',
+            'templates_path' => dirname(__DIR__) . '/src/App/Resources/views',
             'twig' => [
                 'cache' => dirname(__DIR__) . '/cache/twig',
-                'debug' => true,
-                'auto_reload' => true
             ]
+        ],
+
+        'monolog' => [
+            'name' => 'app',
+            'path' => dirname(__DIR__) . '/var/logs/prod.log'
         ]
 
     ]
