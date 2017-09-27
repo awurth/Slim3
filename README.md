@@ -47,13 +47,13 @@ $ chmod 777 cache
 
 ### 4. Create tables
 ``` bash
-$ php bootstrap/database.php
+$ php app/database.php
 ```
 
 ## Key files
 - `public/index.php`: Application entry point
 - `cache/twig/`: Twig cache
-- `bootstrap/`: Configuration files
+- `app/`: Configuration files
     - `controllers.php`: Registers every controller in the app container
     - `database.php`: Script for creating database tables
     - `parameters.yml.dist`: Database configuration file model (do not put your database configuration here)

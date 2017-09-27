@@ -4,17 +4,17 @@ session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$settings = require __DIR__ . '/../bootstrap/settings.php';
+$settings = require __DIR__ . '/../app/settings.php';
 $app = new Slim\App($settings);
 
-require __DIR__ . '/../bootstrap/dependencies.php';
+require __DIR__ . '/../app/dependencies.php';
 
-require __DIR__ . '/../bootstrap/handlers.php';
+require __DIR__ . '/../app/handlers.php';
 
-require __DIR__ . '/../bootstrap/middleware.php';
+require __DIR__ . '/../app/middleware.php';
 
-require __DIR__ . '/../bootstrap/controllers.php';
+require __DIR__ . '/../app/controllers.php';
 
-require __DIR__ . '/../bootstrap/routes.php';
+require __DIR__ . '/../app/routes.php';
 
 $app->run();

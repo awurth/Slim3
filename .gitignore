@@ -3,7 +3,7 @@ node_modules/
 public/lib/
 cache/twig/*
 !cache/twig/.gitkeep
-bootstrap/parameters.yml
+app/parameters.yml
 public/css/*
 !public/css/.gitkeep
 public/js/*

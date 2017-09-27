@@ -14,20 +14,20 @@ session_start();
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-$prodSettings = require __DIR__ . '/../../bootstrap/settings.php';
-$devSettings = require __DIR__ . '/../../bootstrap/settings_dev.php';
+$prodSettings = require __DIR__ . '/../../app/settings.php';
+$devSettings = require __DIR__ . '/../../app/settings_dev.php';
 $settings = array_replace_recursive($prodSettings, $devSettings);
 
 $app = new Slim\App($settings);
 
-require __DIR__ . '/../../bootstrap/dependencies.php';
+require __DIR__ . '/../../app/dependencies.php';
 
-require __DIR__ . '/../../bootstrap/handlers.php';
+require __DIR__ . '/../../app/handlers.php';
 
-require __DIR__ . '/../../bootstrap/middleware.php';
+require __DIR__ . '/../../app/middleware.php';
 
-require __DIR__ . '/../../bootstrap/controllers.php';
+require __DIR__ . '/../../app/controllers.php';
 
-require __DIR__ . '/../../bootstrap/routes.php';
+require __DIR__ . '/../../app/routes.php';
 
 $app->run();
