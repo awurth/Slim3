@@ -1,9 +1,11 @@
 vendor/
 node_modules/
 public/lib/
-cache/twig/*
-!cache/twig/.gitkeep
 app/parameters.yml
+var/cache/*
+!var/cache/.gitkeep
+var/logs/*
+!var/logs/.gitkeep
 public/css/*
 !public/css/.gitkeep
 public/js/*

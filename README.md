@@ -40,9 +40,9 @@ $ gulp
 This will compile and watch all SASS and JS files and put the result in the `public/` folder
 
 ### 3. Setup permissions
-You will have to give write permissions to the `cache/` and `cache/twig/` folders
+You will have to give write permissions to the `var/cache/` and `var/logs/` folders
 ``` bash
-$ chmod 777 cache
+$ chmod 777 var/cache var/logs
 ```
 
 ### 4. Create tables
@@ -52,7 +52,7 @@ $ php app/database.php
 
 ## Key files
 - `public/index.php`: Application entry point
-- `cache/twig/`: Twig cache
+- `var/cache/twig/`: Twig cache
 - `app/`: Configuration files
     - `controllers.php`: Registers every controller in the app container
     - `database.php`: Script for creating database tables

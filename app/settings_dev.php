@@ -15,6 +15,10 @@ return [
                 'debug' => true,
                 'auto_reload' => true
             ]
+        ],
+
+        'monolog' => [
+            'path' => dirname(__DIR__) . '/var/logs/dev.log'
         ]
 
     ]
