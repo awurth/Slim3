@@ -1,12 +1,12 @@
 <?php
 
-namespace App\TwigExtension;
+namespace Security\TwigExtension;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Twig_Extension;
-use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class CsrfExtension extends Twig_Extension
+class CsrfExtension extends AbstractExtension
 {
     /**
      * @var string
@@ -24,15 +24,10 @@ class CsrfExtension extends Twig_Extension
         $this->csrfValue = $request->getAttribute('csrf_value');
     }
 
-    public function getName()
-    {
-        return 'csrf';
-    }
-
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction('csrf', array($this, 'csrf'), array('is_safe' => array('html')))
+            new TwigFunction('csrf', [$this, 'csrf'], ['is_safe' => ['html']])
         ];
     }
 

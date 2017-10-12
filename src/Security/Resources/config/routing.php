@@ -1,7 +1,7 @@
 <?php
 
-use App\Middleware\GuestMiddleware;
-use App\Middleware\AuthMiddleware;
+use Security\Middleware\GuestMiddleware;
+use Security\Middleware\AuthMiddleware;
 
 $app->group('', function () {
     $this->map(['GET', 'POST'], '/login', 'auth.controller:login')->setName('login');
@@ -11,5 +11,3 @@ $app->group('', function () {
 $app->get('/logout', 'auth.controller:logout')
     ->add(new AuthMiddleware($container))
     ->setName('logout');
-
-$app->get('/', 'app.controller:home')->setName('home');

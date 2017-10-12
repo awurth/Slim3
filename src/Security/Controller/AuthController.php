@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace Security\Controller;
 
+use App\Controller\Controller;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use Respect\Validation\Validator as V;
 use Slim\Http\Request;

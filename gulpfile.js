@@ -9,8 +9,8 @@ const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const pump         = require('pump');
 
-let sassFiles = 'src/App/Resources/assets/scss/*.scss';
-let jsFiles   = 'src/App/Resources/assets/js/*.js';
+let sassFiles = 'src/*/Resources/assets/scss/*.scss';
+let jsFiles   = 'src/*/Resources/assets/js/*.js';
 let dest      = 'public/';
 
 gulp.task('sass', function () {
@@ -18,6 +18,7 @@ gulp.task('sass', function () {
         .pipe(sourcemaps.init())
         .pipe(autoprefixer())
         .pipe(sass().on('error', sass.logError))
+        .pipe(concat('app.css'))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(dest + 'css/'));
 });

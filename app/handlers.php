@@ -1,6 +1,6 @@
 <?php
 
-use App\Exception\AccessDeniedException;
+use Security\Exception\AccessDeniedException;
 use Slim\Handlers\Strategies\RequestResponseArgs;
 use Slim\Http\Request;
 use Slim\Http\Response;

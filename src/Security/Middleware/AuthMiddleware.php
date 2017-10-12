@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Middleware;
+namespace Security\Middleware;
 
-use App\Exception\AccessDeniedException;
+use App\Middleware\Middleware;
 use Psr\Container\ContainerInterface;
+use Security\Exception\AccessDeniedException;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

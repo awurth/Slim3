@@ -1,19 +1,21 @@
 <?php
 
-namespace App\Middleware;
+namespace Security\Middleware;
 
-use App\TwigExtension\CsrfExtension;
+use App\Middleware\Middleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class CsrfMiddleware extends Middleware
+class GuestMiddleware extends Middleware
 {
     /**
      * {@inheritdoc}
      */
     public function __invoke(Request $request, Response $response, callable $next)
     {
-        $this->view->addExtension(new CsrfExtension($request));
+        if ($this->auth->check()) {
+            return $response->withRedirect($this->router->pathFor('home'));
+        }
 
         return $next($request, $response);
     }
