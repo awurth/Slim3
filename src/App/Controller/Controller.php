@@ -5,6 +5,7 @@ namespace App\Controller;
 use Awurth\SlimValidation\Validator;
 use Cartalyst\Sentinel\Sentinel;
 use Psr\Container\ContainerInterface;
+use Security\Exception\AccessDeniedException;
 use Slim\Exception\NotFoundException;
 use Slim\Flash\Messages;
 use Slim\Http\Request;
@@ -134,6 +135,19 @@ abstract class Controller
     public function notFoundException(Request $request, Response $response)
     {
         return new NotFoundException($request, $response);
+    }
+
+    /**
+     * Creates a new AccessDeniedException.
+     *
+     * @param Request  $request
+     * @param Response $response
+     *
+     * @return AccessDeniedException
+     */
+    public function accessDeniedException(Request $request, Response $response)
+    {
+        return new AccessDeniedException($request, $response);
     }
 
     /**

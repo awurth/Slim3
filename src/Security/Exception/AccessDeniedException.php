@@ -2,13 +2,8 @@
 
 namespace Security\Exception;
 
-use Exception;
-use Throwable;
+use Slim\Exception\SlimException;
 
-class AccessDeniedException extends Exception
+class AccessDeniedException extends SlimException
 {
-    public function __construct($message = 'Access denied', $code = 0, Throwable $previous = null)
-    {
-        parent::__construct($message, $code, $previous);
-    }
 }
