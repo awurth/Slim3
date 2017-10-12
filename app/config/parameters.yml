@@ -1,0 +1,10 @@
+# This file is auto-generated during the composer install
+parameters:
+    driver: mysql
+    host: localhost
+    username: root
+    password: null
+    database: slim_base
+    charset: utf8
+    collation: utf8_general_ci
+    prefix: null

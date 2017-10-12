@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Cartalyst\Sentinel\Native\Facades\Sentinel;
 use Cartalyst\Sentinel\Native\SentinelBootstrapper;
 
-$sentinel = (new Sentinel(new SentinelBootstrapper(__DIR__ . '/../sentinel.php')))->getSentinel();
+$sentinel = (new Sentinel(new SentinelBootstrapper(__DIR__ . '/../config/sentinel.php')))->getSentinel();
 
 $dropTables = [
     'activations',

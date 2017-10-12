@@ -14,11 +14,16 @@ session_start();
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-$prodSettings = require __DIR__ . '/../../app/settings.php';
-$devSettings = require __DIR__ . '/../../app/settings_dev.php';
-$settings = array_replace_recursive($prodSettings, $devSettings);
+$app = new Slim\App([
+    'env' => 'dev',
+    'root_dir' => dirname(__DIR__, 2),
+    'settings' => [
+        'displayErrorDetails' => true
+    ]
+]);
+$container = $app->getContainer();
 
-$app = new Slim\App($settings);
+$container['config'] = require __DIR__ . '/../../app/config/config_dev.php';
 
 require __DIR__ . '/../../app/dependencies.php';
 

@@ -14,9 +14,7 @@ use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use Symfony\Component\Yaml\Yaml;
 
-$container = $app->getContainer();
-
-$parameters = Yaml::parse(file_get_contents(__DIR__ . '/parameters.yml'))['parameters'];
+$parameters = Yaml::parse(file_get_contents(__DIR__ . '/config/parameters.yml'))['parameters'];
 
 $capsule = new Manager();
 $capsule->addConnection($parameters);
@@ -28,7 +26,7 @@ $container['db'] = function () use ($capsule) {
 };
 
 $container['auth'] = function () {
-    $sentinel = new Sentinel(new SentinelBootstrapper(__DIR__ . '/sentinel.php'));
+    $sentinel = new Sentinel(new SentinelBootstrapper(__DIR__ . '/config/sentinel.php'));
 
     return $sentinel->getSentinel();
 };
@@ -42,11 +40,11 @@ $container['validator'] = function () {
 };
 
 $container['view'] = function ($container) {
-    $settings = $container['settings'];
+    $config = $container['config'];
 
     $view = new Twig(
-        $settings['view']['templates_path'],
-        $settings['view']['twig']
+        $config['view']['templates_path'],
+        $config['view']['twig']
     );
 
     $view->addExtension(new TwigExtension(
@@ -56,7 +54,7 @@ $container['view'] = function ($container) {
     $view->addExtension(new Twig_Extension_Debug());
     $view->addExtension(new AssetExtension(
         $container['request'],
-        isset($settings['assets']['base_path']) ? $settings['assets']['base_path'] : ''
+        $config['assets']['base_path'] ?? ''
     ));
     $view->addExtension(new ValidatorExtension($container['validator']));
 
@@ -67,11 +65,11 @@ $container['view'] = function ($container) {
 };
 
 $container['monolog'] = function ($container) {
-    $settings = $container['settings']['monolog'];
+    $config = $container['config']['monolog'];
 
-    $logger = new Logger($settings['name']);
+    $logger = new Logger($config['name']);
     $logger->pushProcessor(new UidProcessor());
-    $logger->pushHandler(new StreamHandler($settings['path'], Logger::DEBUG));
+    $logger->pushHandler(new StreamHandler($config['path'], Logger::DEBUG));
 
     return $logger;
 };
