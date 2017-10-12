@@ -1,5 +1,6 @@
 <?php
 
+use App\Exception\AccessDeniedException;
 use Slim\Handlers\Strategies\RequestResponseArgs;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -28,8 +29,18 @@ if ($container['env'] === 'prod') {
         };
     };
 
+    $container['accessDeniedHandler'] = function ($container) {
+        return function (Request $request, Response $response, Exception $exception) use ($container) {
+            return $response->withStatus(403)->write($container['view']->fetch('Error/403.twig'));
+        };
+    };
+
     $container['errorHandler'] = function ($container) {
         return function (Request $request, Response $response, Exception $exception) use ($container) {
+            if ($exception instanceof AccessDeniedException) {
+                return $container['accessDeniedHandler']($request, $response, $exception);
+            }
+
             return $response->withStatus(500)->write($container['view']->fetch('Error/500.twig'));
         };
     };

@@ -8,8 +8,8 @@ $app->group('', function () {
     $this->map(['GET', 'POST'], '/register', 'auth.controller:register')->setName('register');
 })->add(new GuestMiddleware($container));
 
-$app->group('', function () {
-    $this->get('/logout', 'auth.controller:logout')->setName('logout');
-})->add(new AuthMiddleware($container));
+$app->get('/logout', 'auth.controller:logout')
+    ->add(new AuthMiddleware($container))
+    ->setName('logout');
 
 $app->get('/', 'app.controller:home')->setName('home');

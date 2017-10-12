@@ -2,6 +2,12 @@ body {
   padding-top: 70px;
 }
 
+.ui.container.flash {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px;
+}
+
 .auth.grid {
   position: fixed;
   top: 0;
