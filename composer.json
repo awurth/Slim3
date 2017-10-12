@@ -7,7 +7,7 @@
     "authors": [
         {
             "name": "Alexis Wurth",
-            "email": "alexis.wurth57@gmail.com",
+            "email": "awurth.dev@gmail.com",
             "homepage": "https://github.com/awurth"
         }
     ],
@@ -17,6 +17,7 @@
         }
     },
     "require": {
+        "php": "^7.0",
         "awurth/slim-validation": "^3.0",
         "cartalyst/sentinel": "^2.0",
         "illuminate/database": "^5.4",

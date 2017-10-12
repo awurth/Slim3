@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0df2fafb11003a89e5ec7ea03ac7e18",
+    "content-hash": "a5e49c41207efa0f033b401b4af24330",
     "packages": [
         {
             "name": "awurth/slim-validation",
@@ -1648,6 +1648,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^7.0"
+    },
     "platform-dev": []
 }
