@@ -17,6 +17,7 @@ $dropTables = [
     'user'
 ];
 
+Manager::schema()->disableForeignKeyConstraints();
 foreach ($dropTables as $table) {
     Manager::schema()->dropIfExists($table);
 }
