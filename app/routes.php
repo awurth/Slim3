@@ -1,6 +1,15 @@
 <?php
 
-const ROUTES_DIR = __DIR__ . '/../src/App/Resources/routes/';
+use App\Middleware\GuestMiddleware;
+use App\Middleware\AuthMiddleware;
 
-require ROUTES_DIR . 'app.php';
-require ROUTES_DIR . 'auth.php';
+$app->group('', function () {
+    $this->map(['GET', 'POST'], '/login', 'auth.controller:login')->setName('login');
+    $this->map(['GET', 'POST'], '/register', 'auth.controller:register')->setName('register');
+})->add(new GuestMiddleware($container));
+
+$app->group('', function () {
+    $this->get('/logout', 'auth.controller:logout')->setName('logout');
+})->add(new AuthMiddleware($container));
+
+$app->get('/', 'app.controller:home')->setName('home');
