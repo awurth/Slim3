@@ -1,12 +1,12 @@
 vendor/
 node_modules/
-public/lib/
+public/assets/lib/
 app/parameters.yml
 var/cache/*
 !var/cache/.gitkeep
 var/logs/*
 !var/logs/.gitkeep
-public/css/*
-!public/css/.gitkeep
-public/js/*
-!public/js/.gitkeep
+public/assets/css/*
+!public/assets/css/.gitkeep
+public/assets/js/*
+!public/assets/js/.gitkeep
