@@ -81,7 +81,7 @@ $container['monolog'] = function ($container) {
 
     $logger = new Logger($config['name']);
     $logger->pushProcessor(new UidProcessor());
-    $logger->pushHandler(new StreamHandler($config['path'], Logger::DEBUG));
+    $logger->pushHandler(new StreamHandler($config['path'], $config['level']));
 
     return $logger;
 };

@@ -1,5 +1,7 @@
 <?php
 
+use Monolog\Logger;
+
 return [
 
     'twig' => [
@@ -14,7 +16,8 @@ return [
 
     'monolog' => [
         'name' => 'app',
-        'path' => $container['root_dir'] . '/var/logs/' . $container['env'] . '.log'
+        'path' => $container['root_dir'] . '/var/logs/' . $container['env'] . '.log',
+        'level' => Logger::ERROR
     ]
 
 ];
