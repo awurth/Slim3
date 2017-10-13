@@ -38,7 +38,7 @@ class AuthMiddleware extends Middleware
 
             return $response->withRedirect($this->router->pathFor('login'));
         } elseif ($this->role && !$this->auth->inRole($this->role)) {
-            throw new AccessDeniedException();
+            throw new AccessDeniedException($request, $response);
         }
 
         return $next($request, $response);
