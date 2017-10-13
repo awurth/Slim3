@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use App\Command\DatabaseCommand;
+use Symfony\Component\Console\Application;
+
+$app = new Slim\App([
+    'env' => 'dev',
+    'root_dir' => dirname(__DIR__),
+    'settings' => [
+        'displayErrorDetails' => true
+    ]
+]);
+$container = $app->getContainer();
+
+$container['config'] = require __DIR__ . '/../app/config/config_dev.php';
+
+require __DIR__ . '/../app/dependencies.php';
+
+require __DIR__ . '/../app/handlers.php';
+
+require __DIR__ . '/../app/middleware.php';
+
+require __DIR__ . '/../app/controllers.php';
+
+require __DIR__ . '/../app/routing.php';
+
+$application = new Application();
+
+$application->add(new DatabaseCommand());
+
+$application->run();

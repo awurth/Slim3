@@ -30,6 +30,7 @@
         "slim/flash": "^0.2.0",
         "slim/slim": "^3.8",
         "slim/twig-view": "^2.3",
+        "symfony/console": "^3.3",
         "symfony/http-foundation": "^3.3"
     },
     "config": {

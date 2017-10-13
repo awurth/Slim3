@@ -7,21 +7,6 @@ use Cartalyst\Sentinel\Native\SentinelBootstrapper;
 
 $sentinel = (new Sentinel(new SentinelBootstrapper(__DIR__ . '/../config/sentinel.php')))->getSentinel();
 
-$dropTables = [
-    'activations',
-    'persistences',
-    'reminders',
-    'role_users',
-    'throttle',
-    'roles',
-    'user'
-];
-
-Manager::schema()->disableForeignKeyConstraints();
-foreach ($dropTables as $table) {
-    Manager::schema()->dropIfExists($table);
-}
-
 Manager::schema()->create('user', function (Blueprint $table) {
     $table->increments('id');
     $table->string('username')->unique();
