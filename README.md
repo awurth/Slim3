@@ -64,4 +64,6 @@ $ php bin/console db
 
 ### Check the installation
 Open your project in a browser and navigate to the `public/` folder to view the production environment.
-Go to `public/dev/` to use the development environment (displays errors details).
+Go to `public/dev/` to use the development environment (displays errors details). The page should look like this:
+
+![Slim Base Homepage](home.png)
