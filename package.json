@@ -13,12 +13,16 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^6.1.2",
-    "gulp-clean-css": "^3.7.0",
+    "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.4.1",
     "gulp-uglify": "^3.0.0",
     "pump": "^1.0.2"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "semantic-ui": "^2.2.13"
   }
 }

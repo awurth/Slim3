@@ -1,8 +1,0 @@
-{
-  "name": "slim-base",
-  "private": true,
-  "dependencies": {
-    "jquery": "^3.2.1",
-    "semantic": "^2.2.11"
-  }
-}
