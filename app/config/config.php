@@ -2,12 +2,12 @@
 
 return [
 
-    'view' => [
-        'templates_path' => [
+    'twig' => [
+        'path' => [
             $container['root_dir'] . '/src/App/Resources/views',
             $container['root_dir'] . '/src/Security/Resources/views'
         ],
-        'twig' => [
+        'options' => [
             'cache' => $container['root_dir'] . '/var/cache/' . $container['env'] . '/twig',
         ]
     ],

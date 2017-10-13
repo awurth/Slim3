@@ -43,8 +43,8 @@ $container['view'] = function ($container) {
     $config = $container['config'];
 
     $view = new Twig(
-        $config['view']['templates_path'],
-        $config['view']['twig']
+        $config['twig']['path'],
+        $config['twig']['options']
     );
 
     $view->addExtension(new TwigExtension(
