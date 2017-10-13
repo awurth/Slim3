@@ -3,10 +3,10 @@
 namespace App\TwigExtension;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Twig_Extension;
-use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class AssetExtension extends Twig_Extension
+class AssetExtension extends AbstractExtension
 {
     /**
      * @var ServerRequestInterface
@@ -18,24 +18,35 @@ class AssetExtension extends Twig_Extension
      */
     protected $basePath;
 
+    /**
+     * Constructor.
+     *
+     * @param ServerRequestInterface $request
+     * @param string                 $basePath
+     */
     public function __construct(ServerRequestInterface $request, $basePath = '')
     {
         $this->request = $request;
         $this->basePath = $basePath;
     }
 
-    public function getName()
-    {
-        return 'asset';
-    }
-
+    /**
+     * {@inheritdoc}
+     */
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction('asset', [$this, 'asset'])
+            new TwigFunction('asset', [$this, 'asset'])
         ];
     }
 
+    /**
+     * Gets the path to the asset.
+     *
+     * @param string $path
+     *
+     * @return string
+     */
     public function asset($path)
     {
         return $this->request->getUri()->getBaseUrl() . '/' . $this->basePath . $path;
