@@ -2,73 +2,66 @@
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/297ce2e4-166d-45d5-8d11-ae0651a8c7ac/mini.png)](https://insight.sensiolabs.com/projects/297ce2e4-166d-45d5-8d11-ae0651a8c7ac) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/awurth/slim-base/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/awurth/slim-base/?branch=master)
 
-This is a skeleton for Slim PHP micro-framework to get started quickly
+This is a skeleton for the Slim PHP micro-framework to get started quickly
 
 ## Features
-- Eloquent ORM
-- Flash messages
-- CSRF protection
-- Authentication (Sentinel)
-- Validation (Respect)
-- Twig templating engine (cache, debug)
-- CSS Framework Semantic UI
+- [Eloquent ORM](https://github.com/illuminate/database)
+- Flash messages ([Slim Flash](https://github.com/slimphp/Slim-Flash))
+- CSRF protection ([Slim Csrf](https://github.com/slimphp/Slim-Csrf)) with automated fields rendering with a twig function
+- Authentication ([Sentinel](https://github.com/cartalyst/sentinel))
+- Validation ([Respect](https://github.com/Respect/Validation) + [Slim Validation](https://github.com/awurth/slim-validation))
+- Twig templating engine [Slim Twig View](https://github.com/slimphp/Twig-View) with cache and debug
+- CSS Framework [Semantic UI](https://github.com/Semantic-Org/Semantic-UI)
+- A **Gulpfile** with a watcher for *SASS* and *JS* files, and minification
 - Helpers for assets management, redirections, ...
 
+For more information, check out the project's [website](http://awurth.fr/doc/boilerplate/slim) or the [wiki](https://github.com/awurth/slim-base/wiki).
+
 ## Installation
-### 1. Create project using Composer
+### Create project using Composer
 ``` bash
-$ composer create-project awurth/slim-base [app-name]
+$ composer create-project awurth/slim-base [project-name]
 ```
 
-### 2. Download bower and npm dependencies
+Composer will ask you to provide some information for the database connection, that will be stored in `app/parameters.yml`. This file is ignored by Git so all developers working on the project can have their own configuration.
+
+### Download client-side libraries
 ``` bash
 $ bower install
+
 $ npm install
 ```
-This will create a `lib/` folder in `public/` for jQuery and Semantic UI
+Bower will create a directory called `lib/` in the `public/assets/` folder to store the jQuery and Semantic UI files.
 
-##### Install Gulp globally
+### Gulp
+This boilerplate uses Gulp to manage assets. The CSS and Javascript files are located in `src/App/Resources/assets/`, so you have to use Gulp after creating your project to generate the minified files in `public/`, which will be ignored by Git.
+
+#### Install Gulp
+You can install Gulp globally on your system with the following command if you haven't done it yet
 ``` bash
 $ npm install -g gulp-cli
 ```
 
-##### Run watcher to compile SASS and Javascript
+#### Generate assets
+If you just want to generate the default CSS and JS that comes with this skeleton, run the following command
+``` bash
+$ gulp build
+```
+
+If you want to run a watcher and begin coding, just run
 ``` bash
 $ gulp
 ```
 
-This will compile and watch all SASS and JS files and put the result in the `public/` folder
+### Setup cache files permissions
+The boilerplate uses a cache system for Twig templates and the Monolog library for logging, so you have to make sure that PHP has write permissions on the `var/cache/` and `var/logs/` directories.
 
-### 3. Setup permissions
-You will have to give write permissions to the `var/cache/` and `var/logs/` folders
+### Update your database schema
+During the installation, Composer asked you the name of your database, so make sure you have created a database with the name you provided. Then you can create the tables by running this command
 ``` bash
-$ chmod 777 var/cache var/logs
+$ php bin/console db
 ```
 
-### 4. Create tables
-``` bash
-$ php app/database.php
-```
-
-## Key files
-- `public/index.php`: Application entry point
-- `var/cache/twig/`: Twig cache
-- `app/`: Configuration files
-    - `controllers.php`: Registers every controller in the app container
-    - `database.php`: Script for creating database tables
-    - `parameters.yml.dist`: Database configuration file model (do not put your database configuration here)
-    - `dependencies.php`: Services for Pimple
-    - `handlers.php`: Slim error handlers
-    - `middleware.php`: Application middleware
-    - `settings.php`: Application configuration
-- `src/`
-    - `App/`
-        - `Controller/`: Application controllers
-            - `Controller.php`: Base controller. All controllers should extend this class
-        - `Middleware/`: Application middleware
-        - `Model/`: Eloquent model classes
-        - `Resources/`
-            - `routes/`: Application routes
-                - `app.php`: Main routing file
-                - `auth.php`: Routing file for authentication
-            - `views/`: Twig templates
+### Check the installation
+Open your project in a browser and navigate to the `public/` folder to view the production environment.
+Go to `public/dev/` to use the development environment (displays errors details).
