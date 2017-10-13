@@ -9,6 +9,8 @@ use Illuminate\Database\Capsule\Manager;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
+use Security\TwigExtension\CsrfExtension;
+use Slim\Csrf\Guard;
 use Slim\Flash\Messages;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
@@ -35,6 +37,15 @@ $container['flash'] = function () {
     return new Messages();
 };
 
+$container['csrf'] = function ($container) {
+    $guard = new Guard();
+    if ('prod' === $container['env']) {
+        $guard->setFailureCallable($container['csrfFailureHandler']);
+    }
+
+    return $guard;
+};
+
 $container['validator'] = function () {
     return new Validator();
 };
@@ -56,6 +67,7 @@ $container['view'] = function ($container) {
         $container['request'],
         $config['assets']['base_path'] ?? ''
     ));
+    $view->addExtension(new CsrfExtension($container['csrf']));
     $view->addExtension(new ValidatorExtension($container['validator']));
 
     $view->getEnvironment()->addGlobal('flash', $container['flash']);

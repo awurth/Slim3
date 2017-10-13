@@ -16,7 +16,15 @@ $container['foundHandler'] = function () {
     return new RequestResponseArgs();
 };
 
-if ($container['env'] === 'prod') {
+if ('prod' === $container['env']) {
+    $container['csrfFailureHandler'] = function ($container) {
+        return function (Request $request, Response $response, callable $next) use ($container) {
+            $container['flash']->addMessage('error', 'Failed CSRF check');
+
+            return $response->withRedirect($request->getUri()->getPath());
+        };
+    };
+
     $container['notFoundHandler'] = function ($container) {
         return function (Request $request, Response $response) use ($container) {
             return $response->withStatus(404)->write($container['view']->fetch('Error/404.twig'));

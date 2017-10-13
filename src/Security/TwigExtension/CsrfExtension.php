@@ -2,31 +2,25 @@
 
 namespace Security\TwigExtension;
 
-use Psr\Http\Message\ServerRequestInterface;
+use Slim\Csrf\Guard;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class CsrfExtension extends AbstractExtension
 {
     /**
-     * @var string
+     * @var Guard
      */
-    private $csrfName;
-
-    /**
-     * @var string
-     */
-    private $csrfValue;
+    protected $csrf;
 
     /**
      * Constructor.
      *
-     * @param ServerRequestInterface $request
+     * @param Guard $csrf
      */
-    public function __construct(ServerRequestInterface $request)
+    public function __construct(Guard $csrf)
     {
-        $this->csrfName = $request->getAttribute('csrf_name');
-        $this->csrfValue = $request->getAttribute('csrf_value');
+        $this->csrf = $csrf;
     }
 
     /**
@@ -35,7 +29,7 @@ class CsrfExtension extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('csrf', [$this, 'csrf'], ['is_safe' => ['html']])
+            new TwigFunction('csrf', [$this, 'csrfFields'], ['is_safe' => ['html']])
         ];
     }
 
@@ -44,11 +38,11 @@ class CsrfExtension extends AbstractExtension
      *
      * @return string
      */
-    public function csrf()
+    public function csrfFields()
     {
         return '
-            <input type="hidden" name="csrf_name" value="' . $this->csrfName . '">
-            <input type="hidden" name="csrf_value" value="' . $this->csrfValue . '">
+            <input type="hidden" name="' . $this->csrf->getTokenNameKey() . '" value="' . $this->csrf->getTokenName() . '">
+            <input type="hidden" name="' . $this->csrf->getTokenValueKey() . '" value="' . $this->csrf->getTokenValue() . '">
         ';
     }
 }
