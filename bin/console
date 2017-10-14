@@ -1,8 +1,11 @@
 #!/usr/bin/env php
 <?php
 
+session_start();
+
 require __DIR__ . '/../vendor/autoload.php';
 
+use App\Command\CreateUserCommand;
 use App\Command\DatabaseCommand;
 use Symfony\Component\Console\Application;
 
@@ -30,5 +33,6 @@ require __DIR__ . '/../app/routing.php';
 $application = new Application();
 
 $application->add(new DatabaseCommand());
+$application->add(new CreateUserCommand($container['auth']));
 
 $application->run();
