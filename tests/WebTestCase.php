@@ -2,8 +2,6 @@
 
 namespace Tests;
 
-session_start();
-
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Slim\App;
@@ -17,6 +15,16 @@ class WebTestCase extends TestCase
      * @var bool
      */
     protected $withMiddleware = true;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __construct($name = null, array $data = [], $dataName = '')
+    {
+        session_start();
+
+        parent::__construct($name, $data, $dataName);
+    }
 
     /**
      * Processes the application given a request method and URI.
