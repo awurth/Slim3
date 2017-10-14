@@ -27,14 +27,12 @@ Composer will ask you to provide some information for the database connection, t
 
 ### Download client-side libraries
 ``` bash
-$ bower install
-
 $ npm install
 ```
-Bower will create a directory called `lib/` in the `public/assets/` folder to store the jQuery and Semantic UI files.
+This will install Gulp dependencies and Semantic UI in `public/assets/lib/semantic/`.
 
 ### Gulp
-This boilerplate uses Gulp to manage assets. The CSS and Javascript files are located in `src/App/Resources/assets/`, so you have to use Gulp after creating your project to generate the minified files in `public/`, which will be ignored by Git.
+This boilerplate uses Gulp to manage assets. The CSS and Javascript files are located in `src/*/Resources/assets/`, so you have to use Gulp after creating your project to generate the minified files in `public/`, which will be ignored by Git.
 
 #### Install Gulp
 You can install Gulp globally on your system with the following command if you haven't done it yet
