@@ -44,6 +44,7 @@ $container['csrf'] = function ($container) {
     return $guard;
 };
 
+// https://github.com/awurth/slim-validation
 $container['validator'] = function () {
     return new Validator();
 };
