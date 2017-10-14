@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use Cartalyst\Sentinel\Sentinel;
+use Exception;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -86,7 +87,7 @@ class CreateUserCommand extends Command
             $question = new Question('Please choose a username:');
             $question->setValidator(function ($username) {
                 if (empty($username)) {
-                    throw new \Exception('Username can not be empty');
+                    throw new Exception('Username can not be empty');
                 }
 
                 return $username;
@@ -98,7 +99,7 @@ class CreateUserCommand extends Command
             $question = new Question('Please choose an email:');
             $question->setValidator(function ($email) {
                 if (empty($email)) {
-                    throw new \Exception('Email can not be empty');
+                    throw new Exception('Email can not be empty');
                 }
 
                 return $email;
@@ -111,7 +112,7 @@ class CreateUserCommand extends Command
             $question = new Question('Please choose a password:');
             $question->setValidator(function ($password) {
                 if (empty($password)) {
-                    throw new \Exception('Password can not be empty');
+                    throw new Exception('Password can not be empty');
                 }
 
                 return $password;
