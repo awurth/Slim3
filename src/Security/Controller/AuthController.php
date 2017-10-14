@@ -17,11 +17,12 @@ class AuthController extends Controller
                 'username' => $request->getParam('username'),
                 'password' => $request->getParam('password')
             ];
-            $remember = $request->getParam('remember', false);
+            $remember = $request->getParam('remember') ? true : false;
 
             try {
                 if ($this->auth->authenticate($credentials, $remember)) {
                     $this->flash('success', 'You are now logged in.');
+
                     return $this->redirect($response, 'home');
                 } else {
                     $this->validator->addError('auth', 'Bad username or password');
