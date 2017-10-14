@@ -15,6 +15,7 @@ This is a skeleton for the Slim PHP micro-framework to get started quickly
 - A **Gulpfile** with a watcher for *SASS* and *JS* files, and minification
 - Helpers for assets management, redirections, ...
 - An Admin section
+- Logs ([Monolog](https://github.com/Seldaek/monolog))
 - Functionnal tests base ([PHPUnit](https://github.com/sebastianbergmann/phpunit))
 
 For more information, check out the project's [website](http://awurth.fr/doc/boilerplate/slim) or the [wiki](https://github.com/awurth/slim-base/wiki).
