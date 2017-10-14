@@ -20,7 +20,7 @@ $container['foundHandler'] = function () {
 };
 
 $container['csrfFailureHandler'] = function ($container) {
-    return function (Request $request, Response $response, callable $next) use ($container) {
+    return function (Request $request, Response $response) use ($container) {
         $container['monolog']->error(sprintf('Failed CSRF check on "%s /%s"', $request->getMethod(), $request->getUri()->getPath()));
 
         $container['flash']->addMessage('error', 'Failed CSRF check');
