@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use Awurth\SlimValidation\Validator;
 use Cartalyst\Sentinel\Sentinel;
+use Monolog\Logger;
 use Psr\Container\ContainerInterface;
 use Security\Exception\AccessDeniedException;
+use Slim\Csrf\Guard;
 use Slim\Exception\NotFoundException;
 use Slim\Flash\Messages;
 use Slim\Http\Request;
@@ -14,11 +16,13 @@ use Slim\Router;
 use Slim\Views\Twig;
 
 /**
- * @property Twig view
- * @property Router router
- * @property Messages flash
+ * @property Guard     csrf
+ * @property Logger    monolog
+ * @property Messages  flash
+ * @property Router    router
+ * @property Sentinel  auth
+ * @property Twig      view
  * @property Validator validator
- * @property Sentinel auth
  */
 abstract class Controller
 {
