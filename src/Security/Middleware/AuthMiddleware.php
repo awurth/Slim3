@@ -2,7 +2,7 @@
 
 namespace Security\Middleware;
 
-use App\Middleware\Middleware;
+use App\Middleware\MiddlewareInterface;
 use Cartalyst\Sentinel\Sentinel;
 use Security\Exception\AccessDeniedException;
 use Slim\Flash\Messages;
@@ -10,7 +10,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Router;
 
-class AuthMiddleware implements Middleware
+class AuthMiddleware implements MiddlewareInterface
 {
     /**
      * @var Messages

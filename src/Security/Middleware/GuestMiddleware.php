@@ -2,13 +2,13 @@
 
 namespace Security\Middleware;
 
-use App\Middleware\Middleware;
+use App\Middleware\MiddlewareInterface;
 use Cartalyst\Sentinel\Sentinel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Interfaces\RouterInterface;
 
-class GuestMiddleware implements Middleware
+class GuestMiddleware implements MiddlewareInterface
 {
     /**
      * @var RouterInterface

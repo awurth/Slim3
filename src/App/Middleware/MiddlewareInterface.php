@@ -5,7 +5,7 @@ namespace App\Middleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-interface Middleware
+interface MiddlewareInterface
 {
     /**
      * Method call when the class is user as a function.
