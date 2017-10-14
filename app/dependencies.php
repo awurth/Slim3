@@ -39,9 +39,7 @@ $container['flash'] = function () {
 
 $container['csrf'] = function ($container) {
     $guard = new Guard();
-    if ('prod' === $container['env']) {
-        $guard->setFailureCallable($container['csrfFailureHandler']);
-    }
+    $guard->setFailureCallable($container['csrfFailureHandler']);
 
     return $guard;
 };
