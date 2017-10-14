@@ -6,6 +6,7 @@ return [
 
     'twig' => [
         'path' => [
+            $container['root_dir'] . '/src/Admin/Resources/views',
             $container['root_dir'] . '/src/App/Resources/views',
             $container['root_dir'] . '/src/Security/Resources/views'
         ],

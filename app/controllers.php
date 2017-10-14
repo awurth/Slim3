@@ -1,8 +1,9 @@
 <?php
 
 $controllers = [
-    'app.controller' => 'App\Controller\AppController',
-    'auth.controller' => 'Security\Controller\AuthController'
+    'admin.controller' => 'Admin\Controller\AdminController',
+    'app.controller'   => 'App\Controller\AppController',
+    'auth.controller'  => 'Security\Controller\AuthController'
 ];
 
 foreach ($controllers as $key => $class) {
