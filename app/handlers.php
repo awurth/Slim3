@@ -15,13 +15,17 @@ use Slim\Http\Response;
  *
  * https://www.slimframework.com/docs/objects/router.html#route-strategies
  */
-$container['foundHandler'] = function () {
+$container['foundHandler'] = function ($container) {
+    /** @var Request $request */
+    $request = $container['request'];
+    $container['monolog']->debug(sprintf('Matched route "%s /%s"', $request->getMethod(), ltrim($request->getUri()->getPath(), '/')));
+
     return new RequestResponseArgs();
 };
 
 $container['csrfFailureHandler'] = function ($container) {
     return function (Request $request, Response $response) use ($container) {
-        $container['monolog']->error(sprintf('Failed CSRF check on "%s /%s"', $request->getMethod(), $request->getUri()->getPath()));
+        $container['monolog']->error(sprintf('Failed CSRF check on "%s /%s"', $request->getMethod(), ltrim($request->getUri()->getPath(), '/')));
 
         $container['flash']->addMessage('error', 'Failed CSRF check');
 
@@ -35,7 +39,7 @@ $container['csrfFailureHandler'] = function ($container) {
 
 $container['notFoundHandler'] = function ($container) {
     return function (Request $request, Response $response) use ($container) {
-        $container['monolog']->error(sprintf('No route found for "%s /%s"', $request->getMethod(), $request->getUri()->getPath()));
+        $container['monolog']->error(sprintf('No route found for "%s /%s"', $request->getMethod(), ltrim($request->getUri()->getPath(), '/')));
 
         if ('prod' === $container['env']) {
             return $response->withStatus(404)->write($container['view']->fetch('Error/404.twig'));

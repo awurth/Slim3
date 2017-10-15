@@ -7,7 +7,7 @@ This is a skeleton for the Slim PHP micro-framework to get started quickly
 ## Features
 - [Eloquent ORM](https://github.com/illuminate/database)
 - Flash messages ([Slim Flash](https://github.com/slimphp/Slim-Flash))
-- CSRF protection ([Slim Csrf](https://github.com/slimphp/Slim-Csrf)) with automated fields rendering with a twig function
+- CSRF protection ([Slim Csrf](https://github.com/slimphp/Slim-Csrf)) with fields rendering with a twig function
 - Authentication ([Sentinel](https://github.com/cartalyst/sentinel))
 - Validation ([Respect](https://github.com/Respect/Validation) + [Slim Validation](https://github.com/awurth/slim-validation))
 - Twig templating engine [Slim Twig View](https://github.com/slimphp/Twig-View) with cache and debug
@@ -16,6 +16,7 @@ This is a skeleton for the Slim PHP micro-framework to get started quickly
 - Helpers for assets management, redirections, ...
 - An Admin section
 - Logs ([Monolog](https://github.com/Seldaek/monolog))
+- Console commands for updating the database schema or creating users
 - Functionnal tests base ([PHPUnit](https://github.com/sebastianbergmann/phpunit))
 
 For more information, check out the project's [website](http://awurth.fr/doc/boilerplate/slim) or the [wiki](https://github.com/awurth/slim-base/wiki).
