@@ -8,7 +8,7 @@ use Slim\Http\Response;
 interface MiddlewareInterface
 {
     /**
-     * Method call when the class is user as a function.
+     * Method called when the class is used as a function.
      *
      * @param Request $request
      * @param Response $response
