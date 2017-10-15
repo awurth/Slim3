@@ -18,7 +18,7 @@ use Slim\Http\Response;
 $container['foundHandler'] = function ($container) {
     /** @var Request $request */
     $request = $container['request'];
-    $container['monolog']->debug(sprintf('Matched route "%s /%s"', $request->getMethod(), ltrim($request->getUri()->getPath(), '/')));
+    $container['monolog']->info(sprintf('Matched route "%s /%s"', $request->getMethod(), ltrim($request->getUri()->getPath(), '/')));
 
     return new RequestResponseArgs();
 };
