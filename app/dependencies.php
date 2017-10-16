@@ -15,6 +15,7 @@ use Slim\Flash\Messages;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use Symfony\Component\Yaml\Yaml;
+use Twig\Extension\DebugExtension;
 
 $parameters = Yaml::parse(file_get_contents(__DIR__ . '/config/parameters.yml'))['parameters'];
 
@@ -52,22 +53,16 @@ $container['validator'] = function () {
 $container['view'] = function ($container) {
     $config = $container['config'];
 
-    $view = new Twig(
-        $config['twig']['path'],
-        $config['twig']['options']
-    );
+    $view = new Twig($config['twig']['path'], $config['twig']['options']);
 
-    $view->addExtension(new TwigExtension(
-        $container['router'],
-        $container['request']->getUri()
-    ));
-    $view->addExtension(new Twig_Extension_Debug());
-    $view->addExtension(new AssetExtension(
-        $container['request'],
-        $config['assets']['base_path'] ?? ''
-    ));
+    $view->addExtension(new TwigExtension($container['router'], $container['request']->getUri()));
+    $view->addExtension(new DebugExtension());
     $view->addExtension(new CsrfExtension($container['csrf']));
     $view->addExtension(new ValidatorExtension($container['validator']));
+    $view->addExtension(new AssetExtension(
+        $container['request'],
+        $config['assets']['base_path'] ?? null
+    ));
 
     $view->getEnvironment()->addGlobal('flash', $container['flash']);
     $view->getEnvironment()->addGlobal('auth', $container['auth']);
