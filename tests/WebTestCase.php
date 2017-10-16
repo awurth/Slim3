@@ -58,7 +58,7 @@ class WebTestCase extends TestCase
         ]);
         $container = $app->getContainer();
 
-        $container['config'] = require __DIR__ . '/../app/config/config.php';
+        $container['config'] = require __DIR__ . '/../app/config/config.dev.php';
 
         require __DIR__ . '/../app/dependencies.php';
         require __DIR__ . '/../app/handlers.php';

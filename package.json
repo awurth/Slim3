@@ -1,6 +1,6 @@
 {
   "name": "slim-base",
-  "version": "2.2.5",
+  "version": "3.0.4",
   "description": "Boilerplate for Slim PHP micro-framework",
   "repository": {
     "type": "git",

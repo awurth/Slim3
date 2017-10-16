@@ -18,7 +18,7 @@ $app = new Slim\App([
 ]);
 $container = $app->getContainer();
 
-$container['config'] = require __DIR__ . '/../app/config/config_dev.php';
+$container['config'] = require __DIR__ . '/../app/config/config.dev.php';
 
 require __DIR__ . '/../app/dependencies.php';
 
