@@ -27,7 +27,7 @@ For more information, check out the project's [website](http://awurth.fr/doc/boi
 $ composer create-project awurth/slim-base [project-name]
 ```
 
-Composer will ask you to provide some information for the database connection, that will be stored in `app/parameters.yml`. This file is ignored by Git so all developers working on the project can have their own configuration.
+Composer will ask you to provide some information for the database connection, that will be stored in `app/config/parameters.yml`. This file is ignored by Git so all developers working on the project can have their own configuration.
 
 ### Download client-side libraries
 ``` bash
