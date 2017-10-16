@@ -24,7 +24,7 @@ class AssetExtension extends AbstractExtension
      * @param ServerRequestInterface $request
      * @param string                 $basePath
      */
-    public function __construct(ServerRequestInterface $request, $basePath = '')
+    public function __construct(ServerRequestInterface $request, $basePath = null)
     {
         $this->request = $request;
         $this->basePath = $basePath;
@@ -49,6 +49,10 @@ class AssetExtension extends AbstractExtension
      */
     public function asset($path)
     {
-        return $this->request->getUri()->getBaseUrl() . '/' . $this->basePath . $path;
+        if (null !== $this->basePath) {
+            return $this->request->getUri()->getBaseUrl() . '/' . trim($this->basePath, '/') . '/' . $path;
+        }
+
+        return $this->request->getUri()->getBaseUrl() . '/' . $path;
     }
 }

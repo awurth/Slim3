@@ -2,7 +2,7 @@
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/297ce2e4-166d-45d5-8d11-ae0651a8c7ac/mini.png)](https://insight.sensiolabs.com/projects/297ce2e4-166d-45d5-8d11-ae0651a8c7ac) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/awurth/slim-base/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/awurth/slim-base/?branch=master)
 
-This is a skeleton for the Slim PHP micro-framework to get started quickly
+This is an app skeleton for the Slim PHP Micro-Framework to get started quickly
 
 ## Features
 - [Eloquent ORM](https://github.com/illuminate/database)
