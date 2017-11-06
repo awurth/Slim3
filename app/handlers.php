@@ -89,7 +89,7 @@ $container['errorHandler'] = function ($container) {
         if ('prod' === $container['env']) {
             return $response->withStatus(500)->write($container['view']->fetch('Error/500.twig'));
         } else {
-            return (new Slim\Handlers\Error())($request, $response, $exception);
+            return (new Slim\Handlers\Error(true))($request, $response, $exception);
         }
     };
 };
@@ -103,7 +103,7 @@ $container['phpErrorHandler'] = function ($container) {
         if ('prod' === $container['env']) {
             return $response->withStatus(500)->write($container['view']->fetch('Error/500.twig'));
         } else {
-            return (new PhpError())($request, $response, $error);
+            return (new PhpError(true))($request, $response, $error);
         }
     };
 };
