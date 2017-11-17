@@ -5,8 +5,12 @@
   left: 0;
   right: 0;
   background-color: #DADADA;
-
+  
   & > .column {
     max-width: 450px;
   }
+}
+
+.ui.stacked.segment:after {
+  border-top: 0;
 }
