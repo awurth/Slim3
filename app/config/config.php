@@ -6,9 +6,9 @@ return [
 
     'twig' => [
         'path' => [
-            $container['root_dir'] . '/src/Admin/Resources/views',
-            $container['root_dir'] . '/src/Core/Resources/views',
-            $container['root_dir'] . '/src/Security/Resources/views'
+            $container['root_dir'] . '/src/Admin/Resources/templates',
+            $container['root_dir'] . '/src/Core/Resources/templates',
+            $container['root_dir'] . '/src/Security/Resources/templates'
         ],
         'options' => [
             'cache' => $container['root_dir'] . '/var/cache/' . $container['env'] . '/twig',
