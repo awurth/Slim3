@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Security\TwigExtension;
+namespace App\Security\Twig;
 
 use Slim\Csrf\Guard;
 use Twig\Extension\AbstractExtension;
