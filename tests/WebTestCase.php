@@ -68,7 +68,7 @@ class WebTestCase extends TestCase
         }
 
         require __DIR__ . '/../app/controllers.php';
-        require __DIR__ . '/../app/routing.php';
+        require __DIR__ . '/../app/routes.php';
 
         return $app->process($request, $response);
     }
