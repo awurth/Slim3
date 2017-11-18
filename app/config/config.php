@@ -6,9 +6,9 @@ return [
 
     'twig' => [
         'path' => [
-            $container['root_dir'] . '/src/Admin/Resources/templates',
-            $container['root_dir'] . '/src/Core/Resources/templates',
-            $container['root_dir'] . '/src/Security/Resources/templates'
+            'Core'     => $container['root_dir'] . '/src/Core/Resources/templates',
+            'Admin'    => $container['root_dir'] . '/src/Admin/Resources/templates',
+            'Security' => $container['root_dir'] . '/src/Security/Resources/templates'
         ],
         'options' => [
             'cache' => $container['root_dir'] . '/var/cache/' . $container['env'] . '/twig',
@@ -16,8 +16,8 @@ return [
     ],
 
     'monolog' => [
-        'name' => 'app',
-        'path' => $container['root_dir'] . '/var/logs/' . $container['env'] . '.log',
+        'name'  => 'app',
+        'path'  => $container['root_dir'] . '/var/logs/' . $container['env'] . '.log',
         'level' => Logger::ERROR
     ]
 
