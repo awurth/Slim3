@@ -43,9 +43,9 @@ $container['validator'] = function () {
 };
 
 $container['view'] = function ($container) {
-    $config = $container['config'];
+    $config = $container['config']['twig'];
 
-    $view = new Twig($config['twig']['path'], $config['twig']['options']);
+    $view = new Twig($config['path'], $config['options']);
 
     $view->addExtension(new TwigExtension($container['router'], $container['request']->getUri()));
     $view->addExtension(new DebugExtension());
