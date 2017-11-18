@@ -12,7 +12,7 @@ $container = $app->getContainer();
 
 $container['config'] = require __DIR__ . '/../app/config/config.php';
 
-require __DIR__ . '/../app/dependencies.php';
+require __DIR__ . '/../app/container.php';
 
 require __DIR__ . '/../app/handlers.php';
 
