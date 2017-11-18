@@ -14,22 +14,15 @@ use Slim\Csrf\Guard;
 use Slim\Flash\Messages;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
-use Symfony\Component\Yaml\Yaml;
 use Twig\Extension\DebugExtension;
 
-$parameters = Yaml::parse(file_get_contents(__DIR__ . '/config/parameters.yml'))['parameters'];
-
 $capsule = new Manager();
-$capsule->addConnection($parameters);
+$capsule->addConnection($container['config']['parameters']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
-$container['db'] = function () use ($capsule) {
-    return $capsule;
-};
-
-$container['auth'] = function () {
-    $sentinel = new Sentinel(new SentinelBootstrapper(__DIR__ . '/config/sentinel.php'));
+$container['auth'] = function ($container) {
+    $sentinel = new Sentinel(new SentinelBootstrapper($container['config']['sentinel']));
     return $sentinel->getSentinel();
 };
 
