@@ -2,14 +2,14 @@
 
 namespace App\Core\Twig;
 
-use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class AssetExtension extends AbstractExtension
 {
     /**
-     * @var ServerRequestInterface
+     * @var Request
      */
     protected $request;
 
@@ -21,10 +21,10 @@ class AssetExtension extends AbstractExtension
     /**
      * Constructor.
      *
-     * @param ServerRequestInterface $request
-     * @param string                 $basePath
+     * @param Request $request
+     * @param string  $basePath
      */
-    public function __construct(ServerRequestInterface $request, $basePath = null)
+    public function __construct(Request $request, $basePath = null)
     {
         $this->request = $request;
         $this->basePath = $basePath;
