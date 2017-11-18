@@ -60,7 +60,7 @@ class WebTestCase extends TestCase
 
         $container['config'] = require __DIR__ . '/../app/config/config.dev.php';
 
-        require __DIR__ . '/../app/dependencies.php';
+        require __DIR__ . '/../app/container.php';
         require __DIR__ . '/../app/handlers.php';
 
         if ($this->withMiddleware) {
