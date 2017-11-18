@@ -13,14 +13,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Admin\\": "src/Admin",
-            "App\\": "src/App",
-            "Security\\": "src/Security"
+            "App\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests"
         }
     },
     "require": {

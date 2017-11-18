@@ -1,7 +1,7 @@
 <?php
 
-use Security\Middleware\AuthMiddleware;
-use Security\Middleware\GuestMiddleware;
+use App\Security\Middleware\AuthMiddleware;
+use App\Security\Middleware\GuestMiddleware;
 
 $container['guest.middleware'] = function ($container) {
     return new GuestMiddleware($container['router'], $container['auth']);

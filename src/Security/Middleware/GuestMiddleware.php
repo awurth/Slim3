@@ -1,8 +1,8 @@
 <?php
 
-namespace Security\Middleware;
+namespace App\Security\Middleware;
 
-use App\Middleware\MiddlewareInterface;
+use App\Core\Middleware\MiddlewareInterface;
 use Cartalyst\Sentinel\Sentinel;
 use Slim\Http\Request;
 use Slim\Http\Response;

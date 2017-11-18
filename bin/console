@@ -5,8 +5,8 @@ session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use App\Command\CreateUserCommand;
-use App\Command\DatabaseCommand;
+use App\Core\Command\CreateUserCommand;
+use App\Core\Command\DatabaseCommand;
 use Symfony\Component\Console\Application;
 
 $app = new Slim\App([

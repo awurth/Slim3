@@ -1,6 +1,7 @@
 <?php
 
-use App\TwigExtension\AssetExtension;
+use App\Core\TwigExtension\AssetExtension;
+use App\Security\TwigExtension\CsrfExtension;
 use Awurth\SlimValidation\Validator;
 use Awurth\SlimValidation\ValidatorExtension;
 use Cartalyst\Sentinel\Native\Facades\Sentinel;
@@ -9,7 +10,6 @@ use Illuminate\Database\Capsule\Manager;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
-use Security\TwigExtension\CsrfExtension;
 use Slim\Csrf\Guard;
 use Slim\Flash\Messages;
 use Slim\Views\Twig;
@@ -30,7 +30,6 @@ $container['db'] = function () use ($capsule) {
 
 $container['auth'] = function () {
     $sentinel = new Sentinel(new SentinelBootstrapper(__DIR__ . '/config/sentinel.php'));
-
     return $sentinel->getSentinel();
 };
 
@@ -45,7 +44,7 @@ $container['csrf'] = function ($container) {
     return $guard;
 };
 
-// https://github.com/awurth/slim-validation
+// https://github.com/awurth/SlimValidation
 $container['validator'] = function () {
     return new Validator();
 };

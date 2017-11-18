@@ -1,10 +1,10 @@
 <?php
 
-namespace Test\App\Controller;
+namespace Test\Core\Controller;
 
 use Tests\WebTestCase;
 
-class AppControllerTest extends WebTestCase
+class CoreControllerTest extends WebTestCase
 {
     public function testHome()
     {

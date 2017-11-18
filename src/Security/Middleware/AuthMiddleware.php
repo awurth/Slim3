@@ -1,10 +1,10 @@
 <?php
 
-namespace Security\Middleware;
+namespace App\Security\Middleware;
 
-use App\Middleware\MiddlewareInterface;
+use App\Core\Middleware\MiddlewareInterface;
+use App\Security\Exception\AccessDeniedException;
 use Cartalyst\Sentinel\Sentinel;
-use Security\Exception\AccessDeniedException;
 use Slim\Flash\Messages;
 use Slim\Http\Request;
 use Slim\Http\Response;

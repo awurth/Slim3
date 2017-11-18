@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controller;
+namespace App\Core\Controller;
 
+use App\Security\Exception\AccessDeniedException;
 use Awurth\SlimValidation\Validator;
 use Cartalyst\Sentinel\Sentinel;
 use Monolog\Logger;
 use Psr\Container\ContainerInterface;
-use Security\Exception\AccessDeniedException;
 use Slim\Csrf\Guard;
 use Slim\Exception\NotFoundException;
 use Slim\Flash\Messages;
