@@ -21,7 +21,7 @@ use Slim\Views\Twig;
  * @property Messages  flash
  * @property Router    router
  * @property Sentinel  auth
- * @property Twig      view
+ * @property Twig      twig
  * @property Validator validator
  */
 abstract class Controller

@@ -42,24 +42,24 @@ $container['validator'] = function () {
     return new Validator();
 };
 
-$container['view'] = function ($container) {
+$container['twig'] = function ($container) {
     $config = $container['config']['twig'];
 
-    $view = new Twig($config['path'], $config['options']);
+    $twig = new Twig($config['path'], $config['options']);
 
-    $view->addExtension(new TwigExtension($container['router'], $container['request']->getUri()));
-    $view->addExtension(new DebugExtension());
-    $view->addExtension(new CsrfExtension($container['csrf']));
-    $view->addExtension(new ValidatorExtension($container['validator']));
-    $view->addExtension(new AssetExtension(
+    $twig->addExtension(new TwigExtension($container['router'], $container['request']->getUri()));
+    $twig->addExtension(new DebugExtension());
+    $twig->addExtension(new CsrfExtension($container['csrf']));
+    $twig->addExtension(new ValidatorExtension($container['validator']));
+    $twig->addExtension(new AssetExtension(
         $container['request'],
         $config['assets']['base_path'] ?? null
     ));
 
-    $view->getEnvironment()->addGlobal('flash', $container['flash']);
-    $view->getEnvironment()->addGlobal('auth', $container['auth']);
+    $twig->getEnvironment()->addGlobal('flash', $container['flash']);
+    $twig->getEnvironment()->addGlobal('auth', $container['auth']);
 
-    return $view;
+    return $twig;
 };
 
 $container['monolog'] = function ($container) {
