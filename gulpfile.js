@@ -1,4 +1,5 @@
 const gulp         = require('gulp');
+var browserSync = require('browser-sync').create();
 const autoprefixer = require('gulp-autoprefixer');
 const babel        = require('gulp-babel');
 const cleanCSS     = require('gulp-clean-css');
@@ -11,6 +12,8 @@ const pump         = require('pump');
 
 let sassFiles = 'src/*/Resources/assets/scss/*.scss';
 let jsFiles   = 'src/*/Resources/assets/js/*.js';
+let phpFiles  = '{app,public,src,tests}/**/*.php';
+let twigFiles  = 'src/**/*.twig';
 let dest      = 'public/assets/';
 
 gulp.task('sass', function () {
@@ -50,6 +53,7 @@ gulp.task('minify-js', function (cb) {
     ], cb);
 });
 
+
 gulp.task('minify', ['minify-css', 'minify-js']);
 
 gulp.task('build', ['sass', 'javascript']);
@@ -57,8 +61,15 @@ gulp.task('build', ['sass', 'javascript']);
 gulp.task('prod', ['build', 'minify']);
 
 gulp.task('watch', function () {
-    gulp.watch(sassFiles, ['sass']);
-    gulp.watch(jsFiles, ['javascript']);
+    browserSync.init({
+        proxy: process.env.PHP_SERVER_URL || 'localhost:8080',
+        notify: false
+    });
+
+    gulp.watch(sassFiles, ['sass']).on('change', browserSync.reload);
+    gulp.watch(jsFiles, ['javascript']).on('change', browserSync.reload);
+    gulp.watch(phpFiles).on('change', browserSync.reload);
+    gulp.watch(twigFiles).on('change', browserSync.reload);
 });
 
 gulp.task('default', ['build', 'watch']);
