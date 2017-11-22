@@ -9,6 +9,6 @@ class CoreController extends Controller
 {
     public function home(Request $request, Response $response)
     {
-        return $this->twig->render($response, '@Core/Core/home.twig');
+        return $this->twig->render($response, 'app/home.twig');
     }
 }

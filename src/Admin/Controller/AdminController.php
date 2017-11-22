@@ -10,6 +10,6 @@ class AdminController extends Controller
 {
     public function home(Request $request, Response $response)
     {
-        return $this->twig->render($response, '@Admin/Admin/home.twig');
+        return $this->twig->render($response, 'admin/home.twig');
     }
 }

@@ -32,7 +32,7 @@ class AuthController extends Controller
             }
         }
 
-        return $this->twig->render($response, '@Security/Auth/login.twig');
+        return $this->twig->render($response, 'auth/login.twig');
     }
 
     public function register(Request $request, Response $response)
@@ -87,7 +87,7 @@ class AuthController extends Controller
             }
         }
 
-        return $this->twig->render($response, '@Security/Auth/register.twig');
+        return $this->twig->render($response, 'auth/register.twig');
     }
 
     public function logout(Request $request, Response $response)

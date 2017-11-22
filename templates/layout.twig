@@ -1,4 +1,4 @@
-{% import '@Core/Macro/form.twig' as form %}
+{% import 'app/macro/form.twig' as form %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +16,11 @@
 </head>
 <body>
     {% block navbar %}
-        {% include '@Core/Core/navbar.twig' %}
+        {% include 'app/_navbar.twig' %}
     {% endblock %}
 
     {% block flash %}
-        {% include '@Core/Core/flash.twig' %}
+        {% include 'app/_flash.twig' %}
     {% endblock %}
 
     {% block body %}{% endblock %}

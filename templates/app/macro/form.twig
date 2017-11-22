@@ -1,4 +1,3 @@
-
 {% macro input(name, value, id, label, class, placeholder, type, required) %}
     <div class="{% if required %}required {% endif %}field{% if has_error(name) %} error{% endif %}">
         <label for="{{ id }}">{{ label }}</label>

@@ -42,7 +42,7 @@ $container['notFoundHandler'] = function ($container) {
         $container['monolog']->error(sprintf('No route found for "%s /%s"', $request->getMethod(), ltrim($request->getUri()->getPath(), '/')));
 
         if ('prod' === $container['env']) {
-            return $response->withStatus(404)->write($container['twig']->fetch('@Core/Error/404.twig'));
+            return $response->withStatus(404)->write($container['twig']->fetch('error/404.twig'));
         } else {
             return (new NotFound())($request, $response);
         }
@@ -59,7 +59,7 @@ $container['notAllowedHandler'] = function ($container) {
         ));
 
         if ('prod' === $container['env']) {
-            return $response->withStatus(405)->write($container['twig']->fetch('@Core/Error/4xx.twig'));
+            return $response->withStatus(405)->write($container['twig']->fetch('error/4xx.twig'));
         } else {
             return (new NotAllowed())($request, $response, $methods);
         }
@@ -72,7 +72,7 @@ $container['accessDeniedHandler'] = function ($container) {
             'exception' => $exception
         ]);
 
-        return $response->withStatus(403)->write($container['twig']->fetch('@Core/Error/403.twig'));
+        return $response->withStatus(403)->write($container['twig']->fetch('error/403.twig'));
     };
 };
 
@@ -87,7 +87,7 @@ $container['errorHandler'] = function ($container) {
         ]);
 
         if ('prod' === $container['env']) {
-            return $response->withStatus(500)->write($container['twig']->fetch('@Core/Error/500.twig'));
+            return $response->withStatus(500)->write($container['twig']->fetch('error/500.twig'));
         } else {
             return (new Slim\Handlers\Error(true))($request, $response, $exception);
         }
@@ -101,7 +101,7 @@ $container['phpErrorHandler'] = function ($container) {
         ]);
 
         if ('prod' === $container['env']) {
-            return $response->withStatus(500)->write($container['twig']->fetch('@Core/Error/500.twig'));
+            return $response->withStatus(500)->write($container['twig']->fetch('error/500.twig'));
         } else {
             return (new PhpError(true))($request, $response, $error);
         }
