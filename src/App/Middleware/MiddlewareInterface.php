@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Middleware;
+namespace App\Middleware;
 
 use Slim\Http\Request;
 use Slim\Http\Response;

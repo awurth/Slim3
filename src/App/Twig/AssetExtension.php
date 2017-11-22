@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Twig;
+namespace App\Twig;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Twig\Extension\AbstractExtension;

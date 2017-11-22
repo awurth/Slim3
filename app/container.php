@@ -1,7 +1,7 @@
 <?php
 
-use App\Core\Twig\AssetExtension;
-use App\Security\Twig\CsrfExtension;
+use App\Twig\AssetExtension;
+use App\Twig\CsrfExtension;
 use Awurth\SlimValidation\Validator;
 use Awurth\SlimValidation\ValidatorExtension;
 use Cartalyst\Sentinel\Native\Facades\Sentinel;

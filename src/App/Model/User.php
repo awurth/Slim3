@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Security\Model;
+namespace App\Model;
 
 use Cartalyst\Sentinel\Users\EloquentUser;
 

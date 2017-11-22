@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Core\Controller;
+namespace App\Controller;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class CoreController extends Controller
+class AdminController extends Controller
 {
     public function home(Request $request, Response $response)
     {
-        return $this->twig->render($response, 'app/home.twig');
+        return $this->twig->render($response, 'admin/home.twig');
     }
 }

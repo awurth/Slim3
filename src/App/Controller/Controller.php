@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Core\Controller;
+namespace App\Controller;
 
-use App\Security\Exception\AccessDeniedException;
+use App\Exception\AccessDeniedException;
 use Awurth\SlimValidation\Validator;
 use Cartalyst\Sentinel\Sentinel;
 use Monolog\Logger;
