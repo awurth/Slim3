@@ -1,13 +1,13 @@
 {
   "name": "slim-base",
-  "version": "3.0.6",
-  "description": "Boilerplate for Slim PHP micro-framework",
+  "version": "3.2.0",
+  "description": "Slim PHP Micro-Framework skeleton",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/awurth/slim-base.git"
+    "url": "git+https://github.com/awurth/Slim.git"
   },
   "license": "MIT",
-  "homepage": "https://github.com/awurth/slim-base#readme",
+  "homepage": "https://github.com/awurth/Slim#readme",
   "devDependencies": {
     "babel-preset-env": "^1.6.0",
     "gulp": "^3.9.1",
