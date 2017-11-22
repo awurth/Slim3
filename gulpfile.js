@@ -9,8 +9,8 @@ const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const pump         = require('pump');
 
-let sassFiles = 'src/*/Resources/assets/scss/*.scss';
-let jsFiles   = 'src/*/Resources/assets/js/*.js';
+let sassFiles = 'assets/scss/*.scss';
+let jsFiles   = 'assets/js/*.js';
 let dest      = 'public/assets/';
 
 gulp.task('sass', function () {
