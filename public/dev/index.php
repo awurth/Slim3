@@ -14,18 +14,10 @@ session_start();
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-$app = new Slim\App([
-    'env'      => 'dev',
-    'root_dir' => dirname(__DIR__, 2),
+$app = new App\Application('dev', [
     'settings' => [
         'displayErrorDetails' => true
     ]
 ]);
-
-$container = $app->getContainer();
-
-$container['config'] = require __DIR__ . '/../../app/config/config.dev.php';
-
-require __DIR__ . '/../../app/bootstrap.php';
 
 $app->run();
