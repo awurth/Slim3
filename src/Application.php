@@ -55,7 +55,7 @@ class Application extends App
 
     public function getLogDir()
     {
-        return $this->getRootDir().'/var/logs';
+        return $this->getRootDir().'/var/log';
     }
 
     public function getRootDir()
