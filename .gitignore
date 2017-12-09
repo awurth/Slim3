@@ -1,7 +1,7 @@
 vendor/
 node_modules/
 public/assets/lib/
-app/config/parameters.yml
+config/parameters.yml
 var/cache/*
 !var/cache/.gitkeep
 var/log/*

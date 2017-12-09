@@ -2,7 +2,7 @@
 
 use Monolog\Logger;
 
-$config = require __DIR__ . '/config.php';
+$config = require $app->getConfigurationDir().'/services.php';
 
 $config['twig']['assets']['base_path']    = '..';
 $config['twig']['options']['debug']       = true;

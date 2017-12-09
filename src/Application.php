@@ -42,7 +42,7 @@ class Application extends App
 
     public function getConfigurationDir()
     {
-        return $this->getRootDir().'/app';
+        return $this->getRootDir().'/config';
     }
 
     public function getEnvironment()
@@ -77,10 +77,10 @@ class Application extends App
             'settings' => require $this->getConfigurationDir().'/slim.php'
         ];
 
-        if (file_exists($this->getConfigurationDir().'/config/config.'.$this->getEnvironment().'.php')) {
-            $configuration['settings'] += require $this->getConfigurationDir().'/config/config.'.$this->getEnvironment().'.php';
+        if (file_exists($this->getConfigurationDir().'/services.'.$this->getEnvironment().'.php')) {
+            $configuration['settings'] += require $this->getConfigurationDir().'/services.'.$this->getEnvironment().'.php';
         } else {
-            $configuration['settings'] += require $this->getConfigurationDir().'/config/config.php';
+            $configuration['settings'] += require $this->getConfigurationDir().'/services.php';
         }
 
         return $configuration;

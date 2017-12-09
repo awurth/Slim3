@@ -5,9 +5,9 @@ use Symfony\Component\Yaml\Yaml;
 
 return [
 
-    'parameters' => Yaml::parse(file_get_contents(__DIR__.'/parameters.yml'))['parameters'],
+    'parameters' => Yaml::parse(file_get_contents($app->getConfigurationDir().'/parameters.yml'))['parameters'],
 
-    'sentinel' => require __DIR__.'/sentinel.php',
+    'sentinel' => require $app->getConfigurationDir().'/sentinel.php',
 
     'twig' => [
         'path' => [
