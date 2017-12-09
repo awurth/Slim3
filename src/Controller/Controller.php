@@ -52,7 +52,7 @@ abstract class Controller
      *
      * @return string[]
      */
-    public function params(Request $request, array $params, $default = null)
+    protected function params(Request $request, array $params, $default = null)
     {
         $data = [];
         foreach ($params as $param) {
@@ -71,7 +71,7 @@ abstract class Controller
      *
      * @return Response
      */
-    public function redirect(Response $response, $route, array $params = [])
+    protected function redirect(Response $response, $route, array $params = [])
     {
         return $response->withRedirect($this->router->pathFor($route, $params));
     }
@@ -84,7 +84,7 @@ abstract class Controller
      *
      * @return Response
      */
-    public function redirectTo(Response $response, $url)
+    protected function redirectTo(Response $response, $url)
     {
         return $response->withRedirect($url);
     }
@@ -98,7 +98,7 @@ abstract class Controller
      *
      * @return Response
      */
-    public function json(Response $response, $data, $status = 200)
+    protected function json(Response $response, $data, $status = 200)
     {
         return $response->withJson($data, $status);
     }
@@ -112,7 +112,7 @@ abstract class Controller
      *
      * @return int
      */
-    public function write(Response $response, $data, $status = 200)
+    protected function write(Response $response, $data, $status = 200)
     {
         return $response->withStatus($status)->getBody()->write($data);
     }
@@ -123,7 +123,7 @@ abstract class Controller
      * @param string $name
      * @param string $message
      */
-    public function flash($name, $message)
+    protected function flash($name, $message)
     {
         $this->flash->addMessage($name, $message);
     }
@@ -136,7 +136,7 @@ abstract class Controller
      *
      * @return NotFoundException
      */
-    public function notFoundException(Request $request, Response $response)
+    protected function notFoundException(Request $request, Response $response)
     {
         return new NotFoundException($request, $response);
     }
@@ -149,7 +149,7 @@ abstract class Controller
      *
      * @return AccessDeniedException
      */
-    public function accessDeniedException(Request $request, Response $response)
+    protected function accessDeniedException(Request $request, Response $response)
     {
         return new AccessDeniedException($request, $response);
     }
