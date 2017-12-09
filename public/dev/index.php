@@ -14,10 +14,6 @@ session_start();
 
 require __DIR__ . '/../../vendor/autoload.php';
 
-$app = new App\Application('dev', [
-    'settings' => [
-        'displayErrorDetails' => true
-    ]
-]);
+$app = new App\Application('dev');
 
 $app->run();

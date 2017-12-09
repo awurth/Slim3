@@ -17,12 +17,12 @@ use Slim\Views\TwigExtension;
 use Twig\Extension\DebugExtension;
 
 $capsule = new Manager();
-$capsule->addConnection($container['config']['parameters']);
+$capsule->addConnection($container['settings']['parameters']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 $container['auth'] = function ($container) {
-    $sentinel = new Sentinel(new SentinelBootstrapper($container['config']['sentinel']));
+    $sentinel = new Sentinel(new SentinelBootstrapper($container['settings']['sentinel']));
     return $sentinel->getSentinel();
 };
 
@@ -43,7 +43,7 @@ $container['validator'] = function () {
 };
 
 $container['twig'] = function ($container) {
-    $config = $container['config']['twig'];
+    $config = $container['settings']['twig'];
 
     $twig = new Twig($config['path'], $config['options']);
 
@@ -63,7 +63,7 @@ $container['twig'] = function ($container) {
 };
 
 $container['monolog'] = function ($container) {
-    $config = $container['config']['monolog'];
+    $config = $container['settings']['monolog'];
 
     $logger = new Logger($config['name']);
     $logger->pushProcessor(new UidProcessor());

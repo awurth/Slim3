@@ -20,17 +20,14 @@ class Application extends App
     /**
      * Constructor.
      *
-     * @param string                   $environment
-     * @param ContainerInterface|array $settings
+     * @param string $environment
      */
-    public function __construct($environment, $settings = [])
+    public function __construct($environment)
     {
-        parent::__construct($settings);
-
         $this->environment = $environment;
         $this->rootDir = $this->getRootDir();
 
-        $this->loadConfiguration();
+        parent::__construct($this->loadConfiguration());
         $this->configureContainer();
         $this->registerHandlers();
         $this->loadMiddleware();
@@ -76,12 +73,17 @@ class Application extends App
     protected function loadConfiguration()
     {
         $app = $this;
-        $container = $this->getContainer();
+        $configuration = [
+            'settings' => require $this->getConfigurationDir().'/slim.php'
+        ];
+
         if (file_exists($this->getConfigurationDir().'/config/config.'.$this->getEnvironment().'.php')) {
-            $container['config'] = require $this->getConfigurationDir().'/config/config.'.$this->getEnvironment().'.php';
+            $configuration['settings'] += require $this->getConfigurationDir().'/config/config.'.$this->getEnvironment().'.php';
         } else {
-            $container['config'] = require $this->getConfigurationDir().'/config/config.php';
+            $configuration['settings'] += require $this->getConfigurationDir().'/config/config.php';
         }
+
+        return $configuration;
     }
 
     protected function loadMiddleware()
