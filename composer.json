@@ -2,7 +2,7 @@
     "name": "awurth/slim-base",
     "description": "Slim PHP Micro-Framework skeleton",
     "keywords": ["slim", "eloquent", "twig", "semantic", "framework", "boilerplate", "skeleton"],
-    "homepage": "https://github.com/awurth/slim-base",
+    "homepage": "https://github.com/awurth/Slim",
     "license": "MIT",
     "authors": [
         {
@@ -13,12 +13,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "App\\": "src/App"
+            "App\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests"
+            "Tests\\": "tests/"
         }
     },
     "require": {
