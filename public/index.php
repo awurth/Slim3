@@ -5,7 +5,7 @@ use Symfony\Component\Dotenv\Dotenv;
 
 session_start();
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 if (!isset($_SERVER['APP_ENV'])) {
     if (!class_exists(Dotenv::class)) {

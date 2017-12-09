@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\App\Controller;
+namespace Tests\App\Controller;
 
 use Tests\WebTestCase;
 

@@ -50,9 +50,9 @@ class AssetExtension extends AbstractExtension
     public function asset($path)
     {
         if (null !== $this->basePath) {
-            return $this->request->getUri()->getBaseUrl() . '/' . trim($this->basePath, '/') . '/' . $path;
+            return $this->request->getUri()->getBaseUrl().'/'.trim($this->basePath, '/').'/'.$path;
         }
 
-        return $this->request->getUri()->getBaseUrl() . '/' . $path;
+        return $this->request->getUri()->getBaseUrl().'/'.$path;
     }
 }

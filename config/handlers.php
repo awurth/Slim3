@@ -82,7 +82,7 @@ $container['errorHandler'] = function ($container) {
             return $container['accessDeniedHandler']($request, $response, $exception);
         }
 
-        $container['monolog']->error('Uncaught PHP Exception ' . get_class($exception), [
+        $container['monolog']->error('Uncaught PHP Exception '.get_class($exception), [
             'exception' => $exception
         ]);
 
@@ -96,7 +96,7 @@ $container['errorHandler'] = function ($container) {
 
 $container['phpErrorHandler'] = function ($container) {
     return function (Request $request, Response $response, Throwable $error) use ($container) {
-        $container['monolog']->critical('Uncaught PHP Exception ' . get_class($error), [
+        $container['monolog']->critical('Uncaught PHP Exception '.get_class($error), [
             'exception' => $error
         ]);
 

@@ -2,12 +2,14 @@
 
 namespace Tests;
 
+use App\Application;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Slim\App;
 use Slim\Http\Environment;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Symfony\Component\Dotenv\Dotenv;
 
 class WebTestCase extends TestCase
 {
@@ -37,12 +39,10 @@ class WebTestCase extends TestCase
      */
     public function runApp($requestMethod, $requestUri, $requestData = null)
     {
-        $environment = Environment::mock(
-            [
-                'REQUEST_METHOD' => $requestMethod,
-                'REQUEST_URI' => $requestUri
-            ]
-        );
+        $environment = Environment::mock([
+            'REQUEST_METHOD' => $requestMethod,
+            'REQUEST_URI' => $requestUri
+        ]);
 
         $request = Request::createFromEnvironment($environment);
 
@@ -52,23 +52,14 @@ class WebTestCase extends TestCase
 
         $response = new Response();
 
-        $app = new App([
-            'env' => 'test',
-            'root_dir' => dirname(__DIR__)
-        ]);
-        $container = $app->getContainer();
-
-        $container['config'] = require __DIR__ . '/../app/config/config.dev.php';
-
-        require __DIR__ . '/../app/container.php';
-        require __DIR__ . '/../app/handlers.php';
-
-        if ($this->withMiddleware) {
-            require __DIR__ . '/../app/middleware.php';
+        if (!isset($_SERVER['APP_TEST_ENV'])) {
+            if (!class_exists(Dotenv::class)) {
+                throw new \RuntimeException('APP_TEST_ENV environment variable is not defined. You need to define environment variables for configuration or add "symfony/dotenv" as a Composer dependency to load variables from a .env file.');
+            }
+            (new Dotenv())->load(__DIR__.'/../.env');
         }
 
-        require __DIR__ . '/../app/controllers.php';
-        require __DIR__ . '/../app/routes.php';
+        $app = new Application($_SERVER['APP_TEST_ENV'] ?? 'test');
 
         return $app->process($request, $response);
     }

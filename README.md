@@ -16,18 +16,21 @@ This is an app skeleton for the Slim PHP Micro-Framework to get started quickly
 - Helpers for assets management, redirections, ...
 - An Admin section
 - Logs ([Monolog](https://github.com/Seldaek/monolog))
+- Dotenv configuration
 - Console commands for updating the database schema or creating users
 - Functionnal tests base ([PHPUnit](https://github.com/sebastianbergmann/phpunit))
 
 For more information, check out the project's [website](http://awurth.fr/doc/boilerplate/slim) or the [wiki](https://github.com/awurth/slim-base/wiki).
 
 ## Installation
-### Create project using Composer
+### Create the project using Composer
 ``` bash
 $ composer create-project awurth/slim-base [project-name]
 ```
 
-Composer will ask you to provide some information for the database connection, that will be stored in `app/config/parameters.yml`. This file is ignored by Git so all developers working on the project can have their own configuration.
+### Setup environment variables
+
+Copy `.env.dist` to a `.env` file and change the values to your needs. This file is ignored by Git so all developers working on the project can have their own configuration.
 
 ### Download client-side libraries
 ``` bash
@@ -36,7 +39,7 @@ $ npm install
 This will install Gulp dependencies and Semantic UI in `public/assets/lib/semantic/`.
 
 ### Gulp
-This boilerplate uses Gulp to manage assets. The CSS and Javascript files are located in `src/*/Resources/assets/`, so you have to use Gulp after creating your project to generate the minified files in `public/`, which will be ignored by Git.
+This skeleton uses Gulp to manage assets. The CSS and Javascript files are located in `assets/`, so you have to use Gulp after creating your project to generate the minified files in `public/`, which will be ignored by Git.
 
 #### Install Gulp
 You can install Gulp globally on your system with the following command if you haven't done it yet
@@ -56,16 +59,10 @@ $ gulp
 ```
 
 ### Setup cache files permissions
-The boilerplate uses a cache system for Twig templates and the Monolog library for logging, so you have to make sure that PHP has write permissions on the `var/cache/` and `var/logs/` directories.
+The skeleton uses a cache system for Twig templates and the Monolog library for logging, so you have to make sure that PHP has write permissions on the `var/cache/` and `var/log/` directories.
 
 ### Update your database schema
-During the installation, Composer asked you the name of your database, so make sure you have created a database with the name you provided. Then you can create the tables by running this command
+First, create a database with the name you set in the `.env` file. Then you can create the tables by running this command:
 ``` bash
 $ php bin/console db
 ```
-
-### Check the installation
-Open your project in a browser and navigate to the `public/` folder to view the production environment.
-Go to `public/dev/` to use the development environment (displays errors details). The page should look like this:
-
-![Slim Base Homepage](home.png)
