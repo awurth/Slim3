@@ -29,7 +29,7 @@ $container['csrfFailureHandler'] = function ($container) {
 
         $container['flash']->addMessage('error', 'Failed CSRF check');
 
-        if ('prod' === $container['env']) {
+        if ('prod' === $this->getEnvironment()) {
             return $response->withRedirect($request->getUri()->getPath());
         } else {
             return $response->write('Failed CSRF check!');
@@ -41,7 +41,7 @@ $container['notFoundHandler'] = function ($container) {
     return function (Request $request, Response $response) use ($container) {
         $container['monolog']->error(sprintf('No route found for "%s /%s"', $request->getMethod(), ltrim($request->getUri()->getPath(), '/')));
 
-        if ('prod' === $container['env']) {
+        if ('prod' === $this->getEnvironment()) {
             return $response->withStatus(404)->write($container['twig']->fetch('error/404.twig'));
         } else {
             return (new NotFound())($request, $response);
@@ -58,7 +58,7 @@ $container['notAllowedHandler'] = function ($container) {
             implode(', ', $methods)
         ));
 
-        if ('prod' === $container['env']) {
+        if ('prod' === $this->getEnvironment()) {
             return $response->withStatus(405)->write($container['twig']->fetch('error/4xx.twig'));
         } else {
             return (new NotAllowed())($request, $response, $methods);
@@ -86,7 +86,7 @@ $container['errorHandler'] = function ($container) {
             'exception' => $exception
         ]);
 
-        if ('prod' === $container['env']) {
+        if ('prod' === $this->getEnvironment()) {
             return $response->withStatus(500)->write($container['twig']->fetch('error/500.twig'));
         } else {
             return (new Slim\Handlers\Error(true))($request, $response, $exception);
@@ -100,7 +100,7 @@ $container['phpErrorHandler'] = function ($container) {
             'exception' => $error
         ]);
 
-        if ('prod' === $container['env']) {
+        if ('prod' === $this->getEnvironment()) {
             return $response->withStatus(500)->write($container['twig']->fetch('error/500.twig'));
         } else {
             return (new PhpError(true))($request, $response, $error);

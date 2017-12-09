@@ -1,9 +1,0 @@
-parameters:
-    driver: mysql
-    host: localhost
-    username: root
-    password: ~
-    database: slim_base
-    charset: utf8mb4
-    collation: utf8mb4_general_ci
-    prefix: ~

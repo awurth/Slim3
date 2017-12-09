@@ -17,7 +17,7 @@ use Slim\Views\TwigExtension;
 use Twig\Extension\DebugExtension;
 
 $capsule = new Manager();
-$capsule->addConnection($container['settings']['parameters']);
+$capsule->addConnection($container['settings']['eloquent']);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
@@ -51,10 +51,7 @@ $container['twig'] = function ($container) {
     $twig->addExtension(new DebugExtension());
     $twig->addExtension(new CsrfExtension($container['csrf']));
     $twig->addExtension(new ValidatorExtension($container['validator']));
-    $twig->addExtension(new AssetExtension(
-        $container['request'],
-        $config['assets']['base_path'] ?? null
-    ));
+    $twig->addExtension(new AssetExtension($container['request']));
 
     $twig->getEnvironment()->addGlobal('flash', $container['flash']);
     $twig->getEnvironment()->addGlobal('auth', $container['auth']);
