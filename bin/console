@@ -23,7 +23,7 @@ $container = $app->getContainer();
 
 $console = new Console();
 
-$console->add(new RequireFileCommand($app->getConfigurationDir().'/database/index.php', 'db'));
+$console->add(new RequireFileCommand($app->getConfigurationDir().'/database/index.php', 'db', 'Update database schema'));
 $console->add(new SentinelCreateUserCommand($container['auth']));
 
 $console->run();
