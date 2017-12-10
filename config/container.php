@@ -1,7 +1,7 @@
 <?php
 
-use App\Twig\AssetExtension;
-use App\Twig\CsrfExtension;
+use Awurth\Slim\Helper\Twig\AssetExtension;
+use Awurth\Slim\Helper\Twig\CsrfExtension;
 use Awurth\SlimValidation\Validator;
 use Awurth\SlimValidation\ValidatorExtension;
 use Cartalyst\Sentinel\Native\Facades\Sentinel;
@@ -49,9 +49,9 @@ $container['twig'] = function ($container) {
 
     $twig->addExtension(new TwigExtension($container['router'], $container['request']->getUri()));
     $twig->addExtension(new DebugExtension());
+    $twig->addExtension(new AssetExtension($container['request']));
     $twig->addExtension(new CsrfExtension($container['csrf']));
     $twig->addExtension(new ValidatorExtension($container['validator']));
-    $twig->addExtension(new AssetExtension($container['request']));
 
     $twig->getEnvironment()->addGlobal('flash', $container['flash']);
     $twig->getEnvironment()->addGlobal('auth', $container['auth']);
