@@ -2,7 +2,7 @@
 
 namespace App\Middleware;
 
-use App\Exception\AccessDeniedException;
+use Awurth\Slim\Helper\Exception\AccessDeniedException;
 use Cartalyst\Sentinel\Sentinel;
 use Slim\Flash\Messages;
 use Slim\Http\Request;
