@@ -4,8 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad9f7011c539d8c2c01bc265a76b490c",
+    "content-hash": "62db97d5f080b2b80d64db8c2a28db27",
     "packages": [
+        {
+            "name": "awurth/slim-helpers",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/awurth/SlimHelpers.git",
+                "reference": "ea8ba1d9dc5b35dbe941894e4e00692ea516e1f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/awurth/SlimHelpers/zipball/ea8ba1d9dc5b35dbe941894e4e00692ea516e1f6",
+                "reference": "ea8ba1d9dc5b35dbe941894e4e00692ea516e1f6",
+                "shasum": ""
+            },
+            "require": {
+                "slim/slim": "^3.0"
+            },
+            "require-dev": {
+                "cartalyst/sentinel": "^2.0",
+                "slim/csrf": "^0.8.1",
+                "slim/flash": "^0.2.0",
+                "symfony/console": "^3.0",
+                "twig/twig": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Awurth\\Slim\\Helper\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexis Wurth",
+                    "email": "awurth.dev@gmail.com",
+                    "homepage": "https://github.com/awurth"
+                }
+            ],
+            "description": "Slim PHP Micro-Framework helpers",
+            "homepage": "https://github.com/awurth/SlimHelpers",
+            "keywords": [
+                "framework",
+                "helper",
+                "slim"
+            ],
+            "time": "2017-12-10T15:51:55+00:00"
+        },
         {
             "name": "awurth/slim-validation",
             "version": "3.0.2",
