@@ -1,6 +1,6 @@
 <?php
 
-use App\Exception\AccessDeniedException;
+use Awurth\Slim\Helper\Exception\AccessDeniedException;
 use Slim\Handlers\NotAllowed;
 use Slim\Handlers\NotFound;
 use Slim\Handlers\PhpError;
