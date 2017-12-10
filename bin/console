@@ -6,8 +6,8 @@ session_start();
 require __DIR__.'/../vendor/autoload.php';
 
 use App\Application;
-use App\Command\CreateUserCommand;
-use App\Command\DatabaseCommand;
+use Awurth\Slim\Helper\Command\SentinelCreateUserCommand;
+use Awurth\Slim\Helper\Command\RequireFileCommand;
 use Symfony\Component\Console\Application as Console;
 use Symfony\Component\Dotenv\Dotenv;
 
@@ -23,7 +23,7 @@ $container = $app->getContainer();
 
 $console = new Console();
 
-$console->add(new DatabaseCommand());
-$console->add(new CreateUserCommand($container['auth']));
+$console->add(new RequireFileCommand($app->getConfigurationDir().'/database/index.php', 'db'));
+$console->add(new SentinelCreateUserCommand($container['auth']));
 
 $console->run();
