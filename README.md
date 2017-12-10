@@ -1,4 +1,4 @@
-# Slim base - A Slim 3 skeleton
+# Slim 3 application skeleton
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/297ce2e4-166d-45d5-8d11-ae0651a8c7ac/mini.png)](https://insight.sensiolabs.com/projects/297ce2e4-166d-45d5-8d11-ae0651a8c7ac) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/awurth/slim-base/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/awurth/slim-base/?branch=master)
 
@@ -14,7 +14,6 @@ This is an app skeleton for the Slim PHP Micro-Framework to get started quickly
 - CSS Framework [Semantic UI](https://github.com/Semantic-Org/Semantic-UI)
 - A **Gulpfile** with a watcher for *SASS* and *JS* files, and minification
 - Helpers for assets management, redirections, ...
-- An Admin section
 - Logs ([Monolog](https://github.com/Seldaek/monolog))
 - Dotenv configuration
 - Console commands for updating the database schema or creating users

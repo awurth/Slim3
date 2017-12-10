@@ -10,7 +10,3 @@ $app->group('', function () {
 $app->get('/logout', 'auth.controller:logout')
     ->add($container['auth.middleware']())
     ->setName('logout');
-
-$app->group('/admin', function () {
-    $this->get('', 'admin.controller:home')->setName('admin.home');
-})->add($container['auth.middleware']('admin'));
