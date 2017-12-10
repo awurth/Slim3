@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Awurth\Slim\Helper\Controller\Controller;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use Respect\Validation\Validator as V;
 use Slim\Http\Request;
