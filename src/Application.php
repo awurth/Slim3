@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Psr\Container\ContainerInterface;
 use Slim\App;
 
 class Application extends App
