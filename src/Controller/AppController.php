@@ -10,6 +10,6 @@ class AppController extends Controller
 {
     public function home(Request $request, Response $response)
     {
-        return $this->twig->render($response, 'app/home.twig');
+        return $this->render($response, 'app/home.twig');
     }
 }
