@@ -5,7 +5,6 @@ namespace Tests;
 use App\Application;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
-use Slim\App;
 use Slim\Http\Environment;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -13,11 +12,6 @@ use Symfony\Component\Dotenv\Dotenv;
 
 class WebTestCase extends TestCase
 {
-    /**
-     * @var bool
-     */
-    protected $withMiddleware = true;
-
     /**
      * {@inheritdoc}
      */
