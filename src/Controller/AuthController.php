@@ -8,6 +8,10 @@ use Respect\Validation\Validator as V;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
+/**
+ * @property \Awurth\SlimValidation\Validator validator
+ * @property \Cartalyst\Sentinel\Sentinel     auth
+ */
 class AuthController extends Controller
 {
     public function login(Request $request, Response $response)
@@ -68,6 +72,7 @@ class AuthController extends Controller
             }
 
             if ($this->validator->isValid()) {
+                /** @var \Cartalyst\Sentinel\Roles\EloquentRole $role */
                 $role = $this->auth->findRoleByName('User');
 
                 $user = $this->auth->registerAndActivate([
