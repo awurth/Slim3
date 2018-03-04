@@ -39,6 +39,7 @@
         "symfony/http-foundation": "^3.3"
     },
     "require-dev": {
+        "codedungeon/phpunit-result-printer": "^0.6.1",
         "phpunit/phpunit": "^4.8|^5.0|^6.0"
     },
     "config": {
