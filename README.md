@@ -1,6 +1,6 @@
 # Slim 3 application skeleton
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/297ce2e4-166d-45d5-8d11-ae0651a8c7ac/mini.png)](https://insight.sensiolabs.com/projects/297ce2e4-166d-45d5-8d11-ae0651a8c7ac) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/awurth/slim-base/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/awurth/slim-base/?branch=master)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/297ce2e4-166d-45d5-8d11-ae0651a8c7ac/mini.png)](https://insight.sensiolabs.com/projects/297ce2e4-166d-45d5-8d11-ae0651a8c7ac) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/awurth/Slim/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/awurth/Slim/?branch=master)
 
 This is an app skeleton for the Slim PHP Micro-Framework to get started quickly
 
@@ -19,7 +19,7 @@ This is an app skeleton for the Slim PHP Micro-Framework to get started quickly
 - Console commands for updating the database schema or creating users
 - Functionnal tests base ([PHPUnit](https://github.com/sebastianbergmann/phpunit))
 
-For more information, check out the project's [website](http://awurth.fr/doc/boilerplate/slim) or the [wiki](https://github.com/awurth/slim-base/wiki).
+For more information, check out the project's [website](http://awurth.fr/doc/boilerplate/slim) or the [wiki](https://github.com/awurth/Slim/wiki).
 
 ## Installation
 ### Create the project using Composer
