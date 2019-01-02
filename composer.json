@@ -40,7 +40,8 @@
     },
     "require-dev": {
         "codedungeon/phpunit-result-printer": "^0.6.1",
-        "phpunit/phpunit": "^4.8|^5.0|^6.0"
+        "phpunit/phpunit": "^4.8|^5.0|^6.0",
+        "symfony/var-dumper": "^4.1"
     },
     "config": {
         "sort-packages": true
