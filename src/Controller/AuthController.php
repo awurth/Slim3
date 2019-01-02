@@ -21,7 +21,7 @@ class AuthController extends Controller
                 'username' => $request->getParam('username'),
                 'password' => $request->getParam('password')
             ];
-            $remember = $request->getParam('remember') ? true : false;
+            $remember = (bool)$request->getParam('remember');
 
             try {
                 if ($this->auth->authenticate($credentials, $remember)) {

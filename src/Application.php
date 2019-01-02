@@ -27,6 +27,7 @@ class Application extends App
         $this->rootDir = $this->getRootDir();
 
         parent::__construct($this->loadConfiguration());
+
         $this->configureContainer();
         $this->registerHandlers();
         $this->loadMiddleware();
@@ -65,56 +66,65 @@ class Application extends App
 
     protected function configureContainer()
     {
-        $container = $this->getContainer();
-        require $this->getConfigurationDir().'/container.php';
+        $this->readConfigFile('container.php', ['container' => $this->getContainer()]);
     }
 
     protected function loadConfiguration()
     {
-        $app = $this;
-        $configuration = [
-            'settings' => require $this->getConfigurationDir().'/framework.php'
-        ];
+        $settings = $this->readConfigFile('framework.php', ['app' => $this]);
 
         if (file_exists($this->getConfigurationDir().'/services.'.$this->getEnvironment().'.php')) {
-            $configuration['settings'] += require $this->getConfigurationDir().'/services.'.$this->getEnvironment().'.php';
+            $filename = 'services.'.$this->getEnvironment().'.php';
         } else {
-            $configuration['settings'] += require $this->getConfigurationDir().'/services.php';
+            $filename = 'services.php';
         }
 
-        return $configuration;
+        $settings += $this->readConfigFile($filename, ['app' => $this]);
+
+        return ['settings' => $settings];
     }
 
     protected function loadMiddleware()
     {
-        $app = $this;
-        $container = $this->getContainer();
-        require $this->getConfigurationDir().'/middleware.php';
+        $this->readConfigFile('middleware.php', [
+            'app' => $this,
+            'container' => $this->getContainer()
+        ]);
     }
 
     protected function loadRoutes()
     {
-        $app = $this;
-        $container = $this->getContainer();
-        require $this->getConfigurationDir().'/routes.php';
+        $this->readConfigFile('routes.php', [
+            'app' => $this,
+            'container' => $this->getContainer()
+        ]);
     }
 
     protected function registerControllers()
     {
         $container = $this->getContainer();
-        if (file_exists($this->getConfigurationDir().'/controllers.php')) {
-            $controllers = require $this->getConfigurationDir().'/controllers.php';
-            foreach ($controllers as $key => $class) {
-                $container['controller.'.$key] = function ($container) use ($class) {
-                    return new $class($container);
-                };
-            }
+        $controllers = $this->readConfigFile('controllers.php', ['container' => $container]);
+
+        foreach ($controllers as $key => $class) {
+            $container['controller.'.$key] = function ($container) use ($class) {
+                return new $class($container);
+            };
         }
     }
 
     protected function registerHandlers()
     {
-        $container = $this->getContainer();
-        require $this->getConfigurationDir().'/handlers.php';
+        $this->readConfigFile('handlers.php', ['container' => $this->getContainer()]);
+    }
+
+    private function readConfigFile(string $filename, array $params = [])
+    {
+        foreach ($params as $name => $value) {
+            if ($name) {
+                ${$name} = $value;
+            }
+        }
+
+        return require $this->getConfigurationDir().'/'.$filename;
     }
 }
