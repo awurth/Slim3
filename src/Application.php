@@ -73,7 +73,7 @@ class Application extends App
     {
         $app = $this;
         $configuration = [
-            'settings' => require $this->getConfigurationDir().'/slim.php'
+            'settings' => require $this->getConfigurationDir().'/framework.php'
         ];
 
         if (file_exists($this->getConfigurationDir().'/services.'.$this->getEnvironment().'.php')) {
