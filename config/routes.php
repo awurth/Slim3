@@ -1,12 +1,12 @@
 <?php
 
-$app->get('/', 'app.controller:home')->setName('home');
+$app->get('/', 'controller.app:home')->setName('home');
 
 $app->group('', function () {
-    $this->map(['GET', 'POST'], '/login', 'auth.controller:login')->setName('login');
-    $this->map(['GET', 'POST'], '/register', 'auth.controller:register')->setName('register');
-})->add($container['guest.middleware']);
+    $this->map(['GET', 'POST'], '/login', 'controller.auth:login')->setName('login');
+    $this->map(['GET', 'POST'], '/register', 'controller.auth:register')->setName('register');
+})->add($container['middleware.guest']);
 
-$app->get('/logout', 'auth.controller:logout')
-    ->add($container['auth.middleware']())
+$app->get('/logout', 'controller.auth:logout')
+    ->add($container['middleware.auth']())
     ->setName('logout');

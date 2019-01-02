@@ -105,7 +105,7 @@ class Application extends App
         if (file_exists($this->getConfigurationDir().'/controllers.php')) {
             $controllers = require $this->getConfigurationDir().'/controllers.php';
             foreach ($controllers as $key => $class) {
-                $container[$key] = function ($container) use ($class) {
+                $container['controller.'.$key] = function ($container) use ($class) {
                     return new $class($container);
                 };
             }

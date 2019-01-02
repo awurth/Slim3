@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'app.controller'  => App\Controller\AppController::class,
-    'auth.controller' => App\Controller\AuthController::class
+    'app'  => App\Controller\AppController::class,
+    'auth' => App\Controller\AuthController::class
 ];
