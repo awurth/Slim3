@@ -2,46 +2,46 @@
 
 {% block body %}
 
-<div class="ui middle aligned center aligned auth grid">
+  <div class="ui middle aligned center aligned auth grid">
     <div class="column">
-        <h2 class="ui teal header">
-            <i class="user icon"></i> Log-in to your account
-        </h2>
-        <form class="ui large form error" action="{{ path_for('login') }}" method="POST">
-            <div class="ui stacked segment">
-                <div class="field{% if has_error('auth') %} error{% endif %}">
-                    <div class="ui left icon input">
-                        <i class="user icon"></i>
-                        <input type="text" name="username" placeholder="Username">
-                    </div>
-                </div>
-                <div class="field{% if has_error('auth') %} error{% endif %}">
-                    <div class="ui left icon input">
-                        <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="Password">
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="ui checkbox">
-                        <input type="checkbox" id="remember" name="remember" class="hidden">
-                        <label for="remember">Remember me</label>
-                    </div>
-                </div>
-                {{ csrf() }}
-                <input type="submit" class="ui fluid large teal button" value="Login">
+      <h2 class="ui teal header">
+        <i class="user icon"></i> Log-in to your account
+      </h2>
+      <form class="ui large form error" action="{{ path_for('login') }}" method="POST">
+        <div class="ui stacked segment">
+          <div class="field{% if has_error('auth') %} error{% endif %}">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text" name="username" placeholder="Username">
             </div>
-            {% if has_errors() %}
-                <div class="ui error message">
-                    {% for error in errors('auth') %}
-                        <p>{{ error }}</p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </form>
-        <div class="ui message">
-            New to us? <a href="{{ path_for('register') }}">Sign up</a>
+          </div>
+          <div class="field{% if has_error('auth') %} error{% endif %}">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input type="password" name="password" placeholder="Password">
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" id="remember" name="remember" class="hidden">
+              <label for="remember">Remember me</label>
+            </div>
+          </div>
+          {{ csrf() }}
+          <input type="submit" class="ui fluid large teal button" value="Login">
         </div>
+        {% if has_errors() %}
+          <div class="ui error message">
+            {% for error in errors('auth') %}
+              <p>{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </form>
+      <div class="ui message">
+        New to us? <a href="{{ path_for('register') }}">Sign up</a>
+      </div>
     </div>
-</div>
+  </div>
 
 {% endblock %}

@@ -1,12 +1,12 @@
 <div class="ui container flash">
-    {% for name, messages in flash.getMessages() %}
-        <div class="ui {{ name }} message">
-            <i class="close icon"></i>
-            <div class="header">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </div>
-        </div>
-    {% endfor %}
+  {% for name, messages in flash.getMessages() %}
+    <div class="ui {{ name }} message">
+      <i class="close icon"></i>
+      <div class="header">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
 </div>

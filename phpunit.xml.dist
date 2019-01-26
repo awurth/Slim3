@@ -13,9 +13,9 @@
          stopOnFailure="false"
          syntaxCheck="false"
 >
-    <testsuites>
-        <testsuite name="Slim App Test Suite">
-            <directory>./tests/</directory>
-        </testsuite>
-    </testsuites>
+  <testsuites>
+    <testsuite name="Slim App Test Suite">
+      <directory>./tests/</directory>
+    </testsuite>
+  </testsuites>
 </phpunit>

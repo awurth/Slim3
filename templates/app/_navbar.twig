@@ -1,18 +1,18 @@
 <nav class="ui borderless top fixed menu">
-    <a href="{{ path_for('home') }}" class="header item">Slim Skeleton</a>
-    <div class="right menu">
-        {% if auth.check() %}
-            <div class="header item">{{ auth.user.username }}</div>
-            <div class="item">
-                <a href="{{ path_for('logout') }}" class="ui teal circular button">Logout</a>
-            </div>
-        {% else %}
-            <div class="item">
-                <a href="{{ path_for('login') }}" class="ui circular button">Login</a>
-            </div>
-            <div class="item">
-                <a href="{{ path_for('register') }}" class="ui teal circular button">Register</a>
-            </div>
-        {% endif %}
-    </div>
+  <a href="{{ path_for('home') }}" class="header item">Slim Skeleton</a>
+  <div class="right menu">
+    {% if auth.check() %}
+      <div class="header item">{{ auth.user.username }}</div>
+      <div class="item">
+        <a href="{{ path_for('logout') }}" class="ui teal circular button">Logout</a>
+      </div>
+    {% else %}
+      <div class="item">
+        <a href="{{ path_for('login') }}" class="ui circular button">Login</a>
+      </div>
+      <div class="item">
+        <a href="{{ path_for('register') }}" class="ui teal circular button">Register</a>
+      </div>
+    {% endif %}
+  </div>
 </nav>
