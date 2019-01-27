@@ -11,7 +11,7 @@ This is an app skeleton for the Slim PHP Micro-Framework to get started quickly
 - Authentication ([Sentinel](https://github.com/cartalyst/sentinel))
 - Validation ([Respect](https://github.com/Respect/Validation) + [Slim Validation](https://github.com/awurth/slim-validation))
 - Twig templating engine [Slim Twig View](https://github.com/slimphp/Twig-View) with cache and debug
-- CSS Framework [Semantic UI](https://github.com/Semantic-Org/Semantic-UI)
+- CSS Framework [Bootstrap 4](https://github.com/twbs/bootstrap)
 - A **Gulpfile** with a watcher for *SASS* and *JS* files, and minification
 - Helpers for assets management, redirections, ...
 - Logs ([Monolog](https://github.com/Seldaek/monolog))
@@ -35,7 +35,6 @@ Copy `.env.dist` to a `.env` file and change the values to your needs. This file
 ``` bash
 $ npm install
 ```
-This will install Gulp dependencies and Semantic UI in `public/assets/lib/semantic/`.
 
 ### Gulp
 This skeleton uses Gulp to manage assets. The CSS and Javascript files are located in `assets/`, so you have to use Gulp after creating your project to generate the minified files in `public/`, which will be ignored by Git.

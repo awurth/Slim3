@@ -1,7 +1,6 @@
 .env
 vendor/
 node_modules/
-public/assets/lib/
 var/cache/*
 !var/cache/.gitkeep
 var/log/*

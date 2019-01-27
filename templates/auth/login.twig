@@ -1,47 +1,44 @@
 {% extends 'layout.twig' %}
 
+{% block body_class %}login{% endblock body_class %}
+
 {% block body %}
 
-  <div class="ui middle aligned center aligned auth grid">
-    <div class="column">
-      <h2 class="ui teal header">
-        <i class="user icon"></i> Log-in to your account
-      </h2>
-      <form class="ui large form error" action="{{ path_for('login') }}" method="POST">
-        <div class="ui stacked segment">
-          <div class="field{% if has_error('auth') %} error{% endif %}">
-            <div class="ui left icon input">
-              <i class="user icon"></i>
-              <input type="text" name="username" placeholder="Username">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign In</h5>
+          <form class="form-signin" action="{{ path_for('login') }}" method="POST">
+            <div class="form-label-group">
+              <input type="text" id="username" class="form-control" name="username" placeholder="Username" required autofocus>
+              <label for="username">Username</label>
             </div>
-          </div>
-          <div class="field{% if has_error('auth') %} error{% endif %}">
-            <div class="ui left icon input">
-              <i class="lock icon"></i>
-              <input type="password" name="password" placeholder="Password">
+
+            <div class="form-label-group">
+              <input type="password" id="password" class="form-control" name="password" placeholder="Password" required>
+              <label for="password">Password</label>
             </div>
-          </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" id="remember" name="remember" class="hidden">
-              <label for="remember">Remember me</label>
+
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="remember" name="remember">
+              <label class="custom-control-label" for="remember">Remember password</label>
             </div>
-          </div>
-          {{ csrf() }}
-          <input type="submit" class="ui fluid large teal button" value="Login">
+            {{ csrf() }}
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+          </form>
         </div>
-        {% if has_errors() %}
-          <div class="ui error message">
-            {% for error in errors('auth') %}
-              <p>{{ error }}</p>
-            {% endfor %}
-          </div>
-        {% endif %}
-      </form>
-      <div class="ui message">
-        New to us? <a href="{{ path_for('register') }}">Sign up</a>
       </div>
+      {% if has_errors() %}
+        {% for error in errors('auth') %}
+          <div class="alert alert-danger">
+            {{ error }}
+          </div>
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
+</div>
 
-{% endblock %}
+{% endblock body %}

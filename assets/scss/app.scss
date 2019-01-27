@@ -1,9 +1,2 @@
-body {
-  padding-top: 70px;
-}
-
-.ui.container.flash {
-  position: relative;
-  z-index: 1;
-  margin-bottom: 30px;
-}
+@import "partials/_variables";
+@import "components/auth";

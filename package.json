@@ -20,8 +20,5 @@
     "gulp-sourcemaps": "^2.4.1",
     "gulp-uglify": "^3.0.0",
     "pump": "^1.0.3"
-  },
-  "dependencies": {
-    "semantic-ui": "^2.2.13"
   }
 }
