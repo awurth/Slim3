@@ -74,10 +74,10 @@ class Application extends App
     {
         $settings = $this->readConfigFile('framework.php', ['app' => $this]);
 
-        if (file_exists($this->getConfigurationDir().'/services.'.$this->getEnvironment().'.php')) {
-            $filename = 'services.'.$this->getEnvironment().'.php';
+        if (file_exists($this->getConfigurationDir().'/settings.'.$this->getEnvironment().'.php')) {
+            $filename = 'settings.'.$this->getEnvironment().'.php';
         } else {
-            $filename = 'services.php';
+            $filename = 'settings.php';
         }
 
         $settings += $this->readConfigFile($filename, ['app' => $this]);
