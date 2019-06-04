@@ -30,6 +30,7 @@ class Application extends App
 
         $this->configureContainer();
         $this->registerHandlers();
+        $this->registerServices();
         $this->loadMiddleware();
         $this->registerControllers();
         $this->loadRoutes();
@@ -115,6 +116,11 @@ class Application extends App
     protected function registerHandlers()
     {
         $this->readConfigFile('handlers.php', ['container' => $this->getContainer()]);
+    }
+
+    protected function registerServices()
+    {
+        $this->readConfigFile('services.php', ['container' => $this->getContainer()]);
     }
 
     private function readConfigFile(string $filename, array $params = [])
