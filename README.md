@@ -12,7 +12,7 @@ This is an app skeleton for the Slim PHP Micro-Framework to get started quickly
 - Validation ([Respect](https://github.com/Respect/Validation) + [Slim Validation](https://github.com/awurth/slim-validation))
 - Twig templating engine [Slim Twig View](https://github.com/slimphp/Twig-View) with cache and debug
 - CSS Framework [Bootstrap 4](https://github.com/twbs/bootstrap)
-- A **Gulpfile** with a watcher for *SASS* and *JS* files, and minification
+- [Webpack](https://webpack.js.org) [Encore](https://symfony.com/doc/current/frontend.html#webpack-encore) for *SASS* and *JS* files compilation and minification
 - Helpers for assets management, redirections, ...
 - Logs ([Monolog](https://github.com/Seldaek/monolog))
 - Dotenv configuration
@@ -33,27 +33,29 @@ Copy `.env.dist` to a `.env` file and change the values to your needs. This file
 
 ### Download client-side libraries
 ``` bash
+$ yarn
+```
+or if you prefer to use npm
+``` bash
 $ npm install
 ```
 
-### Gulp
-This skeleton uses Gulp to manage assets. The CSS and Javascript files are located in `assets/`, so you have to use Gulp after creating your project to generate the minified files in `public/`, which will be ignored by Git.
-
-#### Install Gulp
-You can install Gulp globally on your system with the following command if you haven't done it yet
-``` bash
-$ npm install -g gulp-cli
-```
+### Webpack
+This skeleton uses Webpack to manage assets. The CSS and Javascript files are located in `assets/`, so you have to use Webpack after creating your project to generate the minified files in `public/`, which will be ignored by Git.
 
 #### Generate assets
 If you just want to generate the default CSS and JS that comes with this skeleton, run the following command
 ``` bash
-$ gulp build
+$ yarn build
+```
+or
+``` bash
+$ npm run build
 ```
 
-If you want to run a watcher and begin coding, just run
+If you want to run a watcher and begin coding
 ``` bash
-$ gulp
+$ yarn watch
 ```
 
 ### Setup cache files permissions

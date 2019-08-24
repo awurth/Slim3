@@ -2,23 +2,27 @@
   "name": "slim-base",
   "version": "4.0.0",
   "description": "Slim PHP Micro-Framework skeleton",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/awurth/Slim.git"
   },
   "license": "MIT",
   "homepage": "https://github.com/awurth/Slim#readme",
+  "scripts": {
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
   "devDependencies": {
-    "babel-preset-env": "^1.6.1",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-clean-css": "^3.9.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.4.1",
-    "gulp-uglify": "^3.0.0",
-    "pump": "^1.0.3"
+    "@symfony/webpack-encore": "^0.28.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.3.1",
+    "webpack-notifier": "^1.8.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
   }
 }
