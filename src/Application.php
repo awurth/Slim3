@@ -16,12 +16,7 @@ class Application extends App
      */
     protected $rootDir;
 
-    /**
-     * Constructor.
-     *
-     * @param string $environment
-     */
-    public function __construct($environment)
+    public function __construct(string $environment)
     {
         $this->environment = $environment;
         $this->rootDir = $this->getRootDir();

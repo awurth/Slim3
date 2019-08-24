@@ -31,14 +31,6 @@ class AuthMiddleware implements MiddlewareInterface
      */
     protected $sentinel;
 
-    /**
-     * Constructor.
-     *
-     * @param Router   $router
-     * @param Messages $flash
-     * @param Sentinel $sentinel
-     * @param string   $role
-     */
     public function __construct(Router $router, Messages $flash, Sentinel $sentinel, $role = null)
     {
         $this->router = $router;

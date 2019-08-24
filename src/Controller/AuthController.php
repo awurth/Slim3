@@ -3,14 +3,17 @@
 namespace App\Controller;
 
 use Awurth\Slim\Helper\Controller\Controller;
+use Awurth\SlimValidation\Validator;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
+use Cartalyst\Sentinel\Roles\EloquentRole;
+use Cartalyst\Sentinel\Sentinel;
 use Respect\Validation\Validator as V;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
 /**
- * @property \Awurth\SlimValidation\Validator validator
- * @property \Cartalyst\Sentinel\Sentinel     auth
+ * @property Validator validator
+ * @property Sentinel  auth
  */
 class AuthController extends Controller
 {
@@ -72,7 +75,7 @@ class AuthController extends Controller
             }
 
             if ($this->validator->isValid()) {
-                /** @var \Cartalyst\Sentinel\Roles\EloquentRole $role */
+                /** @var EloquentRole $role */
                 $role = $this->auth->findRoleByName('User');
 
                 $user = $this->auth->registerAndActivate([

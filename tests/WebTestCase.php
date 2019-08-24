@@ -25,13 +25,13 @@ class WebTestCase extends TestCase
     /**
      * Processes the application given a request method and URI.
      *
-     * @param string $requestMethod
-     * @param string $requestUri
+     * @param string            $requestMethod
+     * @param string            $requestUri
      * @param array|object|null $requestData
      *
      * @return ResponseInterface
      */
-    public function runApp($requestMethod, $requestUri, $requestData = null)
+    public function runApp(string $requestMethod, string $requestUri, $requestData = null)
     {
         $environment = Environment::mock([
             'REQUEST_METHOD' => $requestMethod,

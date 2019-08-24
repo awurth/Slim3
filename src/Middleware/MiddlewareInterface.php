@@ -10,7 +10,7 @@ interface MiddlewareInterface
     /**
      * Method called when the class is used as a function.
      *
-     * @param Request $request
+     * @param Request  $request
      * @param Response $response
      * @param callable $next
      *

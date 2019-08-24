@@ -19,12 +19,6 @@ class GuestMiddleware implements MiddlewareInterface
      */
     protected $sentinel;
 
-    /**
-     * Constructor.
-     *
-     * @param RouterInterface $router
-     * @param Sentinel        $sentinel
-     */
     public function __construct(RouterInterface $router, Sentinel $sentinel)
     {
         $this->router = $router;
