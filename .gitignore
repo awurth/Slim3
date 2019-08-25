@@ -1,5 +1,6 @@
 ###> framework ###
-.env
+.env.local
+.env.*.local
 vendor/
 var/cache/*
 !var/cache/.gitkeep

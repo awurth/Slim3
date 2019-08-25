@@ -29,7 +29,7 @@ $ composer create-project awurth/slim-base [project-name]
 
 ### Setup environment variables
 
-Copy `.env.dist` to a `.env` file and change the values to your needs. This file is ignored by Git so all developers working on the project can have their own configuration.
+Copy `.env` to a `.env.local` file and change the values to your needs. This file is ignored by Git so all developers working on the project can have their own configuration.
 
 ### Download client-side libraries
 ``` bash
@@ -62,7 +62,7 @@ $ yarn watch
 The skeleton uses a cache system for Twig templates and the Monolog library for logging, so you have to make sure that PHP has write permissions on the `var/cache/` and `var/log/` directories.
 
 ### Update your database schema
-First, create a database with the name you set in the `.env` file. Then you can create the tables by running this command:
+First, create a database with the name you set in the `.env*` file. Then you can create the tables by running this command:
 ``` bash
 $ php bin/console db
 ```
