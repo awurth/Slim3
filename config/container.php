@@ -2,6 +2,7 @@
 
 use Awurth\Slim\Helper\Twig\AssetExtension;
 use Awurth\Slim\Helper\Twig\CsrfExtension;
+use Awurth\Slim\Helper\Twig\TranslateExtension;
 use Awurth\SlimValidation\Validator;
 use Awurth\SlimValidation\ValidatorExtension;
 use Cartalyst\Sentinel\Native\Facades\Sentinel;
@@ -15,6 +16,10 @@ use Slim\Flash\Messages;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use Twig\Extension\DebugExtension;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Translation\FileLoader;
+use Illuminate\Translation\Translator;
+
 
 $capsule = new Manager();
 $capsule->addConnection($container['settings']['eloquent']);
@@ -52,11 +57,18 @@ $container['twig'] = function ($container) {
     $twig->addExtension(new AssetExtension($container['request']));
     $twig->addExtension(new CsrfExtension($container['csrf']));
     $twig->addExtension(new ValidatorExtension($container['validator']));
+    $twig->addExtension(new TranslateExtension($container['translator']));
 
     $twig->getEnvironment()->addGlobal('flash', $container['flash']);
     $twig->getEnvironment()->addGlobal('auth', $container['auth']);
+    $twig->getEnvironment()->addGlobal('locale', $container['settings']['locale']);
 
     return $twig;
+};
+
+$container['translator'] = function ($container) {
+  $loader = new FileLoader(new Filesystem(), __DIR__ . '/../lang');
+  return new Translator($loader, $container['settings']['locale']);
 };
 
 $container['monolog'] = function ($container) {

@@ -18,6 +18,7 @@ This is an app skeleton for the Slim PHP Micro-Framework to get started quickly
 - Dotenv configuration
 - Console commands for updating the database schema or creating users
 - Functionnal tests base ([PHPUnit](https://github.com/sebastianbergmann/phpunit))
+- Translation with ([Illuminate Translation](https://github.com/illuminate/translation))
 
 For more information, check out the project's [website](http://awurth.fr/doc/boilerplate/slim) or the [wiki](https://github.com/awurth/Slim/wiki).
 
@@ -66,3 +67,9 @@ First, create a database with the name you set in the `.env` file. Then you can 
 ``` bash
 $ php bin/console db
 ```
+
+### Add/ Use another locale
+To provide another language copy the /lang/en_US directory to suit, eg: /lang/fr_FR.
+Edit/translate the contained app.php and auth.php files with your language.
+Set your locale in .env  
+eg: APP_LOCALE=fr_FR

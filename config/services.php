@@ -4,6 +4,8 @@ return [
 
     'sentinel' => require $app->getConfigurationDir().'/sentinel.php',
 
+    'locale' => $_SERVER['APP_LOCALE'],
+
     'eloquent' => [
         'driver'    => $_SERVER['APP_DATABASE_DRIVER'],
         'host'      => $_SERVER['APP_DATABASE_HOST'],

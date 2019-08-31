@@ -12,6 +12,7 @@
   ],
   "homepage": "https://github.com/awurth/Slim",
   "license": "MIT",
+  "minimum-stability": "dev",
   "authors": [
     {
       "name": "Alexis Wurth",
@@ -29,13 +30,20 @@
       "Tests\\": "tests/"
     }
   },
+  "repositories": [
+     {
+       "type": "vcs",
+       "url": "https://github.com/webanet-australia/SlimHelpers"
+     }
+  ],
   "require": {
     "php": "^7.0",
-    "awurth/slim-helpers": "^1.0",
+    "awurth/slim-helpers": "master",
     "awurth/slim-validation": "^3.0",
     "cartalyst/sentinel": "^2.0",
     "illuminate/database": "^5.4",
     "illuminate/events": "^5.4",
+    "illuminate/translation": "^5.8",
     "monolog/monolog": "^1.23",
     "respect/validation": "^1.1",
     "slim/csrf": "^0.8.0",
