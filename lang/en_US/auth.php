@@ -21,7 +21,6 @@ return [
     'login' => 'Bad username or password.',
     'too_many_attempts' => 'Too many attempts!',
     'username' => 'This username is already used.',
-    'email' => 'This email is already used.',
-
+    'email' => 'This email is already used.'
   ]
 ];
