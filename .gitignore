@@ -1,15 +1,2 @@
-###> framework ###
 .env
-vendor/
-var/cache/*
-!var/cache/.gitkeep
-var/log/*
-!var/log/.gitkeep
-###< framework ###
-
-###> webpack-encore ###
-/node_modules/
-/public/build/
-npm-debug.log
-yarn-error.log
-###< webpack-encore ###
+composer.lock
