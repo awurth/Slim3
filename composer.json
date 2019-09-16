@@ -33,7 +33,7 @@
   "repositories": [
      {
        "type": "vcs",
-       "url": "https://github.com/webanet-australia/SlimHelpers"
+       "url": "https://github.com/awurth/SlimHelpers"
      }
   ],
   "require": {
