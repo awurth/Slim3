@@ -46,14 +46,9 @@ class WebTestCase extends TestCase
 
         $response = new Response();
 
-        if (!isset($_SERVER['APP_TEST_ENV'])) {
-            if (!class_exists(Dotenv::class)) {
-                throw new \RuntimeException('APP_TEST_ENV environment variable is not defined. You need to define environment variables for configuration or add "symfony/dotenv" as a Composer dependency to load variables from a .env file.');
-            }
-            (new Dotenv())->load(__DIR__.'/../.env');
-        }
+        (new Dotenv())->loadEnv(__DIR__.'/../.env');
 
-        $app = new Application($_SERVER['APP_TEST_ENV'] ?? 'test');
+        $app = new Application('test');
 
         return $app->process($request, $response);
     }

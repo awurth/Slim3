@@ -1,6 +1,6 @@
 {
   "name": "slim-base",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "description": "Slim PHP Micro-Framework skeleton",
   "private": true,
   "repository": {
