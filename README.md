@@ -19,7 +19,7 @@ This is an app skeleton for the Slim PHP Micro-Framework to get started quickly
 - Console commands for updating the database schema or creating users
 - Functionnal tests base ([PHPUnit](https://github.com/sebastianbergmann/phpunit))
 
-For more information, check out the project's [website](http://awurth.fr/doc/boilerplate/slim) or the [wiki](https://github.com/awurth/Slim/wiki).
+For more information, check out the project's [wiki](https://github.com/awurth/Slim/wiki).
 
 ## Installation
 ### Create the project using Composer
