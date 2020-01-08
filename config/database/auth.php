@@ -15,7 +15,7 @@ Manager::schema()->create('user', function (Blueprint $table) {
     $table->string('last_name')->nullable();
     $table->string('first_name')->nullable();
     $table->text('permissions');
-    $table->timestamp('last_login');
+    $table->timestamp('last_login')->nullable();
     $table->timestamps();
 });
 
@@ -74,7 +74,7 @@ Manager::schema()->create('throttle', function (Blueprint $table) {
 });
 
 $sentinel->getRoleRepository()->createModel()->create([
-    'name' => 'Admin',
+    'name' => 'admin',
     'slug' => 'admin',
     'permissions' => [
         'user.create' => true,
@@ -84,7 +84,7 @@ $sentinel->getRoleRepository()->createModel()->create([
 ]);
 
 $sentinel->getRoleRepository()->createModel()->create([
-    'name' => 'User',
+    'name' => 'user',
     'slug' => 'user',
     'permissions' => [
         'user.update' => true

@@ -10,6 +10,7 @@ use Cartalyst\Sentinel\Sentinel;
 use Respect\Validation\Validator as V;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use App\Model\Translation;
 
 /**
  * @property Validator validator
@@ -20,6 +21,7 @@ class AuthController extends Controller
     public function login(Request $request, Response $response)
     {
         if ($request->isPost()) {
+
             $credentials = [
                 'username' => $request->getParam('username'),
                 'password' => $request->getParam('password')
@@ -28,17 +30,16 @@ class AuthController extends Controller
 
             try {
                 if ($this->auth->authenticate($credentials, $remember)) {
-                    $this->flash('success', 'You are now logged in.');
+                    $this->flash('success', $this->translate('auth.login_success'));
 
                     return $this->redirect($response, 'home');
                 } else {
-                    $this->validator->addError('auth', 'Bad username or password');
+                    $this->validator->addError('auth',$this->translate('auth.error.login'));
                 }
             } catch (ThrottlingException $e) {
-                $this->validator->addError('auth', 'Too many attempts!');
+                $this->validator->addError('auth', $this->translate('auth.error.too_many_attempts'));
             }
         }
-
         return $this->render($response, 'auth/login.twig');
     }
 
@@ -55,28 +56,28 @@ class AuthController extends Controller
                 'password' => [
                     'rules' => V::noWhitespace()->length(6, 25),
                     'messages' => [
-                        'length' => 'The password length must be between {{minValue}} and {{maxValue}} characters'
+                        'length' => $this->translate('auth.error.password.length')
                     ]
                 ],
                 'password_confirm' => [
                     'rules' => V::equals($password),
                     'messages' => [
-                        'equals' => 'Passwords don\'t match'
+                        'equals' => $this->translate('auth.error.password.match')
                     ]
                 ]
             ]);
 
             if ($this->auth->findByCredentials(['login' => $username])) {
-                $this->validator->addError('username', 'This username is already used.');
+                $this->validator->addError('username', $this->translate('auth.error.username'));
             }
 
             if ($this->auth->findByCredentials(['login' => $email])) {
-                $this->validator->addError('email', 'This email is already used.');
+                $this->validator->addError('email', $this->translate('auth.error.email'));
             }
 
             if ($this->validator->isValid()) {
                 /** @var EloquentRole $role */
-                $role = $this->auth->findRoleByName('User');
+                $role = $this->auth->findRoleByName('user');
 
                 $user = $this->auth->registerAndActivate([
                     'username' => $username,
@@ -89,7 +90,7 @@ class AuthController extends Controller
 
                 $role->users()->attach($user);
 
-                $this->flash('success', 'Your account has been created.');
+                $this->flash('success', $this->translate('auth.register_success'));
 
                 return $this->redirect($response, 'login');
             }
